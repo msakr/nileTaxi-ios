@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SWRevealViewController.h"
+#import "nilecodeAppDelegate.h"
 @interface SideMenuTableViewController : UITableViewController
+{
+    nilecodeAppDelegate   *appDelegate;
+}
 @property (nonatomic, strong) NSArray *menuItems;
 @end

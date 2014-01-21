@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ASIFormDataRequest.h"
+#import "ASIDownloadCache.h"
+#import "JSON.h"
 
 @interface WebServiceManagerAPI : NSObject
 
+
+
++(BOOL)logMeInWithUserName:(NSString* )userName andPassword:(NSString *)password;
++(NSArray*)getAllSatations;
++(NSArray*)gatAllNewTicketsWithSatationID:(NSString*)stationID andUsedTickets:(NSArray*)usedTickets;
 @end

@@ -41,7 +41,7 @@
 }
 
 
-#pragma custom picker creation
+#pragma mark -custom picker creation
 
 -(void)createDatePicker
 {
@@ -88,7 +88,7 @@
 }
 
 
-#pragma items picker delegaes
+#pragma mark -items picker delegaes
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
@@ -109,7 +109,7 @@
 
 
 
-#pragma buttons actions
+#pragma mark -buttons actions
 
 - (IBAction)DoneAction:(id)sender {
     

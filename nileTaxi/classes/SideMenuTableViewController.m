@@ -27,8 +27,8 @@
 {
     [super viewDidLoad];
 
-    
-    self.view.backgroundColor = [UIColor grayColor];
+    appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+        self.view.backgroundColor = [UIColor grayColor];
 //    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
 //    self.tableView.backgroundColor = [UIColor colorWithRed:190 green:190 blue:190 alpha:1.0];
     
@@ -41,6 +41,9 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +65,14 @@
 {
 
     // Return the number of rows in the section.
-    return [self.menuItems count];
+    if (appDelegate.isLogin) {
+        return [self.menuItems count];
+        
+
+    }else{
+        return 1;
+    }
+    
 
 }
 
@@ -70,14 +80,33 @@
 {
 
     NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    if (indexPath.row%2==0) {
-//        cell.backgroundColor=[UIColor colorWithRed:140  green:0 blue:0 alpha:1.0];
-//
-//    }else{
-//        cell.backgroundColor=[UIColor whiteColor];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+
+    
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if (appDelegate.isLogin && indexPath.row==0) {
+        ((UILabel*)[cell viewWithTag:100]).text=@"Logout";
+
+    }else{
+        ((UILabel*)[cell viewWithTag:100]).text=@"Login";
+
+    }
+//    else{
+//        ((UILabel*)[cell viewWithTag:100]).text=@"Login";
 //
 //    }
+//    
+
+    
+    
     
     return cell;
 }

@@ -64,6 +64,8 @@
 		3133E13A1882FD5F0090B508 /* SyncViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3133E1391882FD5F0090B508 /* SyncViewController.m */; };
 		3133E13E1882FD860090B508 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3133E13D1882FD860090B508 /* MapViewController.m */; };
 		3133E1421882FD9C0090B508 /* BookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3133E1411882FD9C0090B508 /* BookViewController.m */; };
+		31680273188EE5DD0012A596 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31680272188EE5DD0012A596 /* MBProgressHUD.m */; };
+		31680274188EE5DD0012A596 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31680272188EE5DD0012A596 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -177,6 +179,8 @@
 		3133E13D1882FD860090B508 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = classes/MapViewController.m; sourceTree = "<group>"; };
 		3133E1401882FD9C0090B508 /* BookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BookViewController.h; path = classes/BookViewController.h; sourceTree = "<group>"; };
 		3133E1411882FD9C0090B508 /* BookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BookViewController.m; path = classes/BookViewController.m; sourceTree = "<group>"; };
+		31680271188EE5DD0012A596 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		31680272188EE5DD0012A596 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +309,7 @@
 		3120D94B187ECDED00F12389 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				31680275188EE5E30012A596 /* progress */,
 				3133E11E1882CBE90090B508 /* sideMenu */,
 				3120D94C187ECE0C00F12389 /* ASIHTTPRequest */,
 				3120D965187ECE0C00F12389 /* SBJson_v3.0 */,
@@ -498,6 +503,15 @@
 			name = book;
 			sourceTree = "<group>";
 		};
+		31680275188EE5E30012A596 /* progress */ = {
+			isa = PBXGroup;
+			children = (
+				31680271188EE5DD0012A596 /* MBProgressHUD.h */,
+				31680272188EE5DD0012A596 /* MBProgressHUD.m */,
+			);
+			name = progress;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -606,6 +620,7 @@
 				3120D91F187EC43800F12389 /* main.m in Sources */,
 				3120D99D187ED3C800F12389 /* Model.xcdatamodeld in Sources */,
 				3120D98A187ECE0C00F12389 /* SBJsonParser.m in Sources */,
+				31680273188EE5DD0012A596 /* MBProgressHUD.m in Sources */,
 				3120D9A0187ED4B400F12389 /* DBManager.m in Sources */,
 				3120D929187EC43800F12389 /* nilecodeViewController.m in Sources */,
 				3133E1421882FD9C0090B508 /* BookViewController.m in Sources */,
@@ -644,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3120D93E187EC43900F12389 /* nileTaxiTests.m in Sources */,
+				31680274188EE5DD0012A596 /* MBProgressHUD.m in Sources */,
 				3133E1261882D5C50090B508 /* MainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

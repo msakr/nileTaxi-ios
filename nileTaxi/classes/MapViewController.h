@@ -8,7 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController : UITableViewController
+@interface MapViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+{
+
+    NSMutableArray *stationsArray;
+    
+    __weak IBOutlet UILabel *stationWaitingNumLabel;
+    __weak IBOutlet UILabel *stationLeavingNumbLabel;
+    __weak IBOutlet UILabel *stationNameLabel;
+    __weak IBOutlet UIView *dialogView;
+
+    __weak IBOutlet UITableView *stationsTableView;
+    
+    int dialogOriginY;
+}
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
+- (IBAction)hideDialogView:(id)sender;
 
 @end

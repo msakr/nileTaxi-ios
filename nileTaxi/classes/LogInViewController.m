@@ -7,7 +7,8 @@
 //
 
 #import "LogInViewController.h"
-
+#import "nilecodeAppDelegate.h"
+#import "WebServiceManagerAPI.h"
 @interface LogInViewController ()
 
 @end
@@ -37,6 +38,11 @@
     userNameTxtField.leftView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"a.png"]];
 //    userNameTxtField.background=[UIImage imageNamed:@"Tsonoqua Mask.gif"];
     
+//
+    
+    
+    nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+    appDelegate.isLogin=NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,7 +52,7 @@
 }
 
 
-#pragma buttons Action
+#pragma mark -buttons Action
 
 -(IBAction)closeKeyBoard:(id)sender
 {
@@ -54,7 +60,78 @@
     [passwordTxtField resignFirstResponder];
 }
 
-#pragma  touch action
+- (IBAction)logInAction:(id)sender {
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [self performSelectorInBackground:@selector(startLogInSerivce) withObject:nil];
+
+}
+
+
+#pragma mark -service handelers
+
+-(void)startLogInSerivce{
+    
+    
+    //validating data
+    
+    if (userNameTxtField.text==nil || userNameTxtField.text.length<=2) {
+        //display Error
+        
+        
+        
+    }else if(passwordTxtField.text==nil || passwordTxtField.text.length<=2) {
+        //display Error
+
+    }else{
+        @autoreleasepool{
+            
+            
+            
+            NSNumber* state=[NSNumber numberWithBool:[WebServiceManagerAPI logMeInWithUserName:userNameTxtField.text andPassword:passwordTxtField.text]];
+    
+            [self performSelectorOnMainThread:@selector(finishLoggingInWithStatus:) withObject:state waitUntilDone:NO];
+            
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+
+}
+
+
+#pragma mark -updateView
+
+-(void)finishLoggingInWithStatus:(NSNumber*)IsLogIn{
+    
+
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    if (!IsLogIn.boolValue) {
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:@"Eroro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertNO show];
+        
+    }else{
+        nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+        appDelegate.isLogin=YES;
+        
+
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    
+    
+    
+    
+}
+
+
+#pragma  mark -touch action
 
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -62,7 +139,7 @@
     [passwordTxtField resignFirstResponder];
     [userNameTxtField resignFirstResponder];
 }
-#pragma delegate textField
+#pragma mark -delegate textField
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
     [self animateTextView: YES];
 

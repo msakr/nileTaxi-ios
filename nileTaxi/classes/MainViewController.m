@@ -66,6 +66,16 @@
     
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    [_sidebarButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    //
+    //    _sidebarButton.target = self.revealViewController;
+    //    _sidebarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>76AF41A6-B21E-4C94-A579-53AD255F4C69</string>
+	<key>IDESourceControlProjectName</key>
+	<string>nileTaxi</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D5D77280-6DD5-4942-A340-9E2E0803CA4C</key>
+		<string>https://github.com/msakr/nileTaxi-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>nileTaxi.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D5D77280-6DD5-4942-A340-9E2E0803CA4C</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/msakr/nileTaxi-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D5D77280-6DD5-4942-A340-9E2E0803CA4C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D5D77280-6DD5-4942-A340-9E2E0803CA4C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>nileTaxi</string>
+		</dict>
+	</array>
+</dict>
+</plist>

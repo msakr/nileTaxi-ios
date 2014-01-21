@@ -15,4 +15,6 @@
     #import <CoreData/CoreData.h>
     #import <Foundation/Foundation.h>
     #import "Constants.h"
+#import "MBProgressHUD.h"
+
 #endif

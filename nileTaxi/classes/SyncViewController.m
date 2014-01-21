@@ -67,7 +67,7 @@
 }
 
 
-#pragma custom pickerDelegat
+#pragma mark -custom pickerDelegat
 
 
 -(void)dateSelected:(NSDate *)selectedDate forComponentCode:(int )code
@@ -100,7 +100,7 @@
 
 
 
-#pragma getStationsBackground
+#pragma mark -getStationsBackground
 
 -(void)loadAllStationsAndTimesAndDirectoins{
     stationsArray=[[NSMutableArray alloc]initWithObjects:@"ST1",@"ST2", nil];
@@ -117,7 +117,7 @@
 }
 
 
-#pragma buttons Enable handler
+#pragma mark -buttons Enable handler
 
 -(void)enableOrDisablAll:(BOOL)EnOrDisable{
 
@@ -129,7 +129,7 @@
 
 
 
-#pragma buttons Action
+#pragma mark -buttons Action
 
 - (IBAction)stationButtonAction:(id)sender {
     

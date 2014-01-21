@@ -21,4 +21,8 @@
 
 
 -(IBAction)closeKeyBoard:(id)sender;
+
+- (IBAction)logInAction:(id)sender;
+
+
 @end

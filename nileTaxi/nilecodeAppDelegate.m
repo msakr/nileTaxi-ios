@@ -7,7 +7,7 @@
 //
 
 #import "nilecodeAppDelegate.h"
-
+#import "WebServiceManagerAPI.h"
 @implementation nilecodeAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -28,6 +28,9 @@
     [_window addSubview:splashView];
     [_window bringSubviewToFront:splashView];
     [_window makeKeyAndVisible];
+    
+    
+    
     
     [self performSelector:@selector(removeSplash) withObject:nil afterDelay:1500.2];
     return YES;
