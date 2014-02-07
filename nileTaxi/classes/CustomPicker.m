@@ -29,6 +29,9 @@
         case type_DatePicker:
             [self createDatePicker];
             break;
+        case type_DatePickerFull:
+            [self createDatePicker];
+            break;
         case type_itemsPicker:
             [self createItemsPicker];
             break;
@@ -51,7 +54,16 @@
 
     }
     
-	datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+    
+    if (_pickerType==type_DatePickerFull) {
+    
+        datePicker.datePickerMode = UIDatePickerModeDateAndTime;
+
+    }else{
+        datePicker.datePickerMode = UIDatePickerModeDate;
+
+    }
+    
     datePicker.date = [NSDate date];
     
     [[_pivkerContainer subviews]
@@ -102,7 +114,8 @@
     
     
     
-    return [_itemsArray objectAtIndex:row];
+    
+    return [_callerDelegate getTitleForRowInArray:_itemsArray andRow:row];//[_itemsArray objectAtIndex:row];
     
 }
 
@@ -122,6 +135,9 @@
     
     switch (_pickerType) {
         case type_DatePicker:
+            [_callerDelegate dateSelected:datePicker.date forComponentCode:_componentCode];
+            break;
+        case type_DatePickerFull:
             [_callerDelegate dateSelected:datePicker.date forComponentCode:_componentCode];
             break;
         case type_itemsPicker:

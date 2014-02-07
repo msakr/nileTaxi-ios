@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "nileTaxi/classes/DBManager.m"
-            timestampString = "410978882.789871"
+            filePath = "nileTaxi/classes/Ticket.m"
+            timestampString = "412444696.222668"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "+getAllTicketsWithNSManagedObjectContext:"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "+getTicketWithJson:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

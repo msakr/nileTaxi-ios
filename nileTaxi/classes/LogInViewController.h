@@ -11,6 +11,8 @@
 @interface LogInViewController : UIViewController<UITextFieldDelegate>
 {
 
+    
+//        NSError *anyError;
 
     __weak IBOutlet UITextField *userNameTxtField;
     

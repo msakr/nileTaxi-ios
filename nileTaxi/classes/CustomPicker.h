@@ -10,10 +10,12 @@
 
 #define type_DatePicker 1
 #define type_itemsPicker 2
+#define type_DatePickerFull 3
 @protocol SelectPickerDelegate <NSObject>
 
 -(void)dateSelected:(NSDate *)selectedDate forComponentCode:(int )code;
 -(void)itemSelected:(id)selectedItem forComponentCode:(int )code;
+-(NSString*)getTitleForRowInArray:(NSArray*)data andRow:(NSInteger)row;
 
 @end
 @interface CustomPicker : UIView<UIPickerViewDataSource,UIPickerViewDelegate>
@@ -24,6 +26,7 @@
 }
 @property(nonatomic)int componentCode;
 @property(nonatomic) int pickerType;
+
 @property(nonatomic, retain) id<SelectPickerDelegate> callerDelegate;
 @property (nonatomic,retain)    NSMutableArray *itemsArray;
 

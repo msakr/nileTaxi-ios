@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "SWRevealViewController.h"
+#import "SelectSationsViewController.h"
 @interface MainViewController ()
 
 @end
@@ -57,6 +58,13 @@
             [self performSegueWithIdentifier:@"showBook" sender:self];
             
             break;
+        case 5:
+            [self performSegueWithIdentifier:@"showScan" sender:self];
+            
+            break;
+            
+            
+            
             
         default:
             break;
@@ -74,6 +82,14 @@
     
     // Set the gesture
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+//    if ([[segue identifier] isEqualToString:@"showBook"]) {
+//        ((SelectSationsViewController*)segue.destinationViewController).ScreenID=1;
+//                ((SelectSationsViewController*)segue.destinationViewController).title=@"From";
+//    }
 }
 
 - (void)didReceiveMemoryWarning

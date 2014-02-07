@@ -26,7 +26,7 @@
     self.managedObjectContext = appDelegate.managedObjectContext;
 
     
-    NSDate *datee=[NSDate date];
+//    NSDate *datee=[NSDate date];
     
 //    Ticket *t=[[Ticket alloc]initWithTicket_id:@"1" andDate:datee andTime:@"123" andStationStartId:@"11" andStationEndId:@"12" andTicketType:@"1" andReturnDate:datee andReturnTime:@"456"];
 //    Ticket *t2=[[Ticket alloc]initWithTicket_id:@"11" andDate:datee andTime:@"1123" andStationStartId:@"111" andStationEndId:@"112" andTicketType:@"11" andReturnDate:datee andReturnTime:@"1456"];
@@ -38,11 +38,11 @@
 
     
     
-    
-    [DBManager addTicketToDBWithTicket_id:@123 andDate:[NSDate date] andTime:@"1" andStationStartId:@11 andStationEndId:@12 andTicketType:@3 andReturnDate:[NSDate date] andReturnTime:@"33" withNSManagedObjectContext:self.managedObjectContext];
-    
-    NSMutableArray *rr=[DBManager getAllTicketsWithNSManagedObjectContext:self.managedObjectContext];
-    NSLog(@"aaaa %i",rr.count)  ;
+//    
+//    [DBManager addTicketToDBWithTicket_id:@123 andDate:[NSDate date] andTime:@"1" andStationStartId:@11 andStationEndId:@12 andTicketType:@3 andReturnDate:[NSDate date] andReturnTime:@"33" withNSManagedObjectContext:self.managedObjectContext];
+//    
+//    NSMutableArray *rr=[DBManager getAllTicketsWithNSManagedObjectContext:self.managedObjectContext];
+//    NSLog(@"aaaa %i",rr.count)  ;
     
 	// Do any additional setup after loading the view, typically from a nib.
 }

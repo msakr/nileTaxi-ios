@@ -8,6 +8,7 @@
 
 #import "nilecodeAppDelegate.h"
 #import "WebServiceManagerAPI.h"
+#import "Helpers.h"
 @implementation nilecodeAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -29,7 +30,11 @@
     [_window bringSubviewToFront:splashView];
     [_window makeKeyAndVisible];
     
-    
+    if ([Helpers getToken]!=nil) {
+        _isLogin=YES;
+    }else{
+        _isLogin=NO;
+    }
     
     
     [self performSelector:@selector(removeSplash) withObject:nil afterDelay:1500.2];

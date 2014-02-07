@@ -55,7 +55,12 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    stationsArray=[[NSMutableArray alloc]initWithObjects:@"Station 1",@"Station 2",@"Station 3",@"Station 12",@"Station 22",@"Station 32",@"Station 11",@"Station 21",@"Station 31", nil];
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    [self performSelectorInBackground:@selector(loadAllMaps) withObject:Nil];
+    
+    mapsArray=[[NSMutableArray alloc]init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,7 +69,40 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark -getStationsBackground
+
+-(void)loadAllMaps{
+    mapsArray=[[NSMutableArray alloc]init];
+    
+    
+    NSError *tempError;
+    
+    
+    
+//    anyError=tempError;
+    NSArray *tempArray=[WebServiceManagerAPI getAllMapsWithErrorMessage:&tempError];
+    
+    
+    if (tempArray==nil && tempError!=nil) {
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:tempError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertNO show];
+        return;
+    }
+    
+    mapsArray=[[NSMutableArray alloc]initWithArray:tempArray];
+    
+    
+    
+    [stationsTableView reloadData];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+    
+    
+    
+}
+
+
 #pragma mark - Table view data source
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -75,11 +113,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [stationsArray count];
+    return [mapsArray count];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return 80;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -96,7 +134,9 @@
     }
     
     
-    ((UILabel*)[cell viewWithTag:100]).text=[stationsArray objectAtIndex:indexPath.row];
+    ((UILabel*)[cell viewWithTag:100]).text=[[mapsArray objectAtIndex:indexPath.row] objectForKey:@"station_name"];
+    
+     ((UILabel*)[cell viewWithTag:102]).text=[NSString stringWithFormat:@"waiting passengers %@",[[mapsArray objectAtIndex:indexPath.row] objectForKey:@"passengers"]];
     
 
     // Configure the cell...
@@ -108,17 +148,17 @@
 {
     //show
     
-    
-        stationNameLabel.text=[stationsArray objectAtIndex:indexPath.row];
-        stationLeavingNumbLabel.text=[NSString stringWithFormat:@"%i L",indexPath.row];
-        stationWaitingNumLabel.text=[NSString stringWithFormat:@"%i W",indexPath.row];
-    
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.5];
-        CGRect frame = dialogView.frame;
-        frame.origin.y =  dialogOriginY-10;
-        dialogView.frame= frame;
-        [UIView commitAnimations];
+//    
+//        stationNameLabel.text=[mapsArray objectAtIndex:indexPath.row];
+//        stationLeavingNumbLabel.text=[NSString stringWithFormat:@"%i L",indexPath.row];
+//        stationWaitingNumLabel.text=[NSString stringWithFormat:@"%i W",indexPath.row];
+//    
+//        [UIView beginAnimations:nil context:nil];
+//        [UIView setAnimationDuration:0.5];
+//        CGRect frame = dialogView.frame;
+//        frame.origin.y =  dialogOriginY-10;
+//        dialogView.frame= frame;
+//        [UIView commitAnimations];
     
 }
 

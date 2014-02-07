@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Tickets" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="from_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="idd" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isUsed" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="return_date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="return_time" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="station_end_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="station_start_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="ticket_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="ticket_type" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mobile" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="num_tickets" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rrn" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ticket_type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="to_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trans_date" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trans_time" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Tickets" positionX="0" positionY="0" width="0" height="0"/>

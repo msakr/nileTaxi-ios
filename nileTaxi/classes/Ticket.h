@@ -11,15 +11,27 @@
 @interface Ticket : NSManagedObject
 
 
-@property (nonatomic,retain) NSNumber *ticket_id;
-@property (nonatomic,retain) NSDate *date;
-@property (nonatomic,retain) NSString *time;
-@property (nonatomic,retain) NSNumber *station_start_id;
-@property (nonatomic,retain) NSNumber *station_end_id;
-@property (nonatomic,retain) NSNumber *ticket_type;
-@property (nonatomic,retain) NSDate *return_date;
-@property (nonatomic,retain) NSString *return_time;
+@property (nonatomic,retain) NSString *email;
+@property (nonatomic,retain) NSString *from_name;
+@property (nonatomic,retain) NSString *idd;
 @property (nonatomic,retain) NSNumber *isUsed;
+@property (nonatomic,retain) NSString *mobile;
+@property (nonatomic,retain) NSString *name;
+@property (nonatomic,retain) NSString *num_tickets;
+@property (nonatomic,retain) NSString *rrn;
+@property (nonatomic,retain) NSString *ticket_type;
+@property (nonatomic,retain) NSString *to_name;
+@property (nonatomic,retain) NSString *trans_date;
+@property (nonatomic,retain) NSString *trans_time;
+
+
+
+@property (nonatomic,retain) NSNumber *isValid;
+
++(id)getTicketWithJson:(NSDictionary *)data;
+
+
+
 
 
 //-(id)initWithTicket_id:(NSString*)ticket_id andDate:(NSDate*)date andTime:(NSString*)time andStationStartId:(NSString *)station_start_id andStationEndId:(NSString *)station_end_id andTicketType:(NSString*)ticket_type andReturnDate:(NSDate *)return_date andReturnTime:(NSString*)return_time;

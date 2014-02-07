@@ -10,15 +10,48 @@
 #import "Constants.h"
 @implementation Ticket
 
-@dynamic ticket_id;
-@dynamic date;
-@dynamic time;
-@dynamic station_start_id;
-@dynamic station_end_id;
-@dynamic ticket_type;
-@dynamic return_date;
-@dynamic return_time;
+
+
+@synthesize isValid;
+@dynamic email;
+@dynamic from_name;
+@dynamic idd;
 @dynamic isUsed;
+@dynamic mobile;
+@dynamic name;
+@dynamic num_tickets;
+@dynamic rrn;
+@dynamic ticket_type;
+@dynamic to_name;
+@dynamic trans_date;
+@dynamic trans_time;
+
+
+
++(id)getTicketWithJson:(NSDictionary *)data{
+    
+    Ticket *temp=[[Ticket alloc]init];
+    temp.name=[data objectForKey:@"name"];
+    temp.email=[data objectForKey:@"email"];
+    temp.mobile=[data objectForKey:@"mobile"];
+    temp.trans_date=[data objectForKey:@"trans_date"];
+    temp.ticket_type=[data objectForKey:@"ticket_type"];
+    temp.trans_time=[data objectForKey:@"trans_time"];
+    temp.rrn=[data objectForKey:@"rrn"];
+    temp.from_name=[data objectForKey:@"from_name"];
+    temp.to_name=[data objectForKey:@"to_name"];
+    temp.isValid=[NSNumber numberWithBool:[data objectForKey:@"valid"]];
+    
+//    temp.email=[data objectForKey:@""];
+//    temp.email=[data objectForKey:@""];
+    
+    
+    
+    
+    return temp;
+    
+}
+
 //-(id)initWithTicket_id:(NSString*)ticket_id andDate:(NSDate*)date andTime:(NSString*)time andStationStartId:(NSString *)station_start_id andStationEndId:(NSString *)station_end_id andTicketType:(NSString*)ticket_type andReturnDate:(NSDate *)return_date andReturnTime:(NSString*)return_time{
 //    self=[super init];
 //    if (self) {

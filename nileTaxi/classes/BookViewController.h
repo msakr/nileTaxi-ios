@@ -9,35 +9,43 @@
 #import <UIKit/UIKit.h>
 #import "CustomPicker.h"
 
-#define stationsButtonCode 1
-#define timesButtonCode 2
-#define directionButtonCode 3
-#define dateButtonCode 4
+
+
+#define dateButtonCodeTripIn 1
+#define dateButtonCodeRound 2
+
 
 @interface BookViewController : UIViewController<SelectPickerDelegate>
 {
     CustomPicker *customPickerView;
 
-    NSMutableArray *stationsArray;
-    NSMutableArray *timesArray;
-    NSMutableArray *directionArray;
     
+    NSDictionary *timesDic;
+
+    NSDate *selectedDateTrip;
+    NSDate *selectedDateTripRound;
     
+    __weak IBOutlet UISwitch *roundTripSwitch;
+    
+    __weak IBOutlet UIButton *selectDateOfTripButton;
     
     __weak IBOutlet UIButton *roundTripButton;
-    __weak IBOutlet UIButton *stationsButton;
+
     
-    __weak IBOutlet UIButton *directionButton;
-    __weak IBOutlet UIButton *timesButton;
+    
 }
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
+@property  bool isOnCall;
+
+@property (weak,nonatomic ) NSDictionary *stationFrom;
+@property (weak,nonatomic ) NSDictionary *stationTo;
+
+@property NSUInteger TripType;
 
 - (IBAction)ChangeroundTrip:(id)sender;
 - (IBAction)BookTicket:(id)sender;
-- (IBAction)selectStation:(id)sender;
 - (IBAction)selectDate:(id)sender;
+- (IBAction)selectTripDateAction:(id)sender;
 
-- (IBAction)selectTime:(id)sender;
-- (IBAction)selectDirection:(id)sender;
 
 @end

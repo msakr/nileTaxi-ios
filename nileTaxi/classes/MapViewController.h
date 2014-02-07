@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "WebServiceManagerAPI.h"
 @interface MapViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 {
 
-    NSMutableArray *stationsArray;
-    
+    NSMutableArray *mapsArray;
+//    NSError *anyError;
     __weak IBOutlet UILabel *stationWaitingNumLabel;
     __weak IBOutlet UILabel *stationLeavingNumbLabel;
     __weak IBOutlet UILabel *stationNameLabel;

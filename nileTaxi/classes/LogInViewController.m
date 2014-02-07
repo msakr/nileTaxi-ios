@@ -9,8 +9,11 @@
 #import "LogInViewController.h"
 #import "nilecodeAppDelegate.h"
 #import "WebServiceManagerAPI.h"
+#import "Helpers.h"
 @interface LogInViewController ()
-
+{
+    NSError *anyError;
+}
 @end
 
 @implementation LogInViewController
@@ -24,6 +27,10 @@
     return self;
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [Helpers logOutUser];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -77,20 +84,29 @@
     
     if (userNameTxtField.text==nil || userNameTxtField.text.length<=2) {
         //display Error
-        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         
         
     }else if(passwordTxtField.text==nil || passwordTxtField.text.length<=2) {
         //display Error
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
 
     }else{
         @autoreleasepool{
             
+            NSError *tempError;
             
-            
-            NSNumber* state=[NSNumber numberWithBool:[WebServiceManagerAPI logMeInWithUserName:userNameTxtField.text andPassword:passwordTxtField.text]];
+            NSNumber* state=[NSNumber numberWithBool:[WebServiceManagerAPI logMeInWithUserName:userNameTxtField.text andPassword:passwordTxtField.text withErrorMessage:&tempError]];
     
             [self performSelectorOnMainThread:@selector(finishLoggingInWithStatus:) withObject:state waitUntilDone:NO];
+            
+            
+            if (tempError!=nil) {
+                anyError=[[NSError alloc]initWithDomain:tempError.domain code:tempError.code userInfo:tempError.userInfo];
+
+            }
             
         }
 
@@ -113,7 +129,7 @@
     [MBProgressHUD hideHUDForView:self.view animated:YES];
     
     if (!IsLogIn.boolValue) {
-        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:@"Eroro" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:anyError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alertNO show];
         
     }else{
