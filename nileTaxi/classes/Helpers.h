@@ -20,4 +20,8 @@
 +(NSString *)getName;
 +(NSString *)getToken;
 +(void)saveName:(NSString *)name andTokenID:(NSString*)tokenID;
+
++(void)saveLastUpdatedHomeScreen:(NSString*)lastUpdated;
++(NSString*)getLastUpdatedHomeScreen;
+
 @end

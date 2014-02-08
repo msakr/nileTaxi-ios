@@ -42,7 +42,7 @@
     CGRect frm=customPickerView.frame;
     frm.origin.y=self.view.frame.size.height+10;
     customPickerView.frame=frm;
-    
+        frm.size.width=self.view.frame.size.width;
     
     [self.view addSubview:customPickerView];
 }

@@ -49,6 +49,10 @@
         
         [nextButton setEnabled:NO];
     }
+    
+    times_return_TabelView.backgroundColor = [UIColor clearColor];
+    times_reservation_TabelView.backgroundColor = [UIColor clearColor];
+
 }
 
 #pragma mark - times table datasource and delegates
@@ -83,6 +87,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"timesCell"];
     }
     
+    cell.backgroundColor =  [UIColor clearColor];
     NSDictionary *tempD;
     if ([tableView isEqual:times_return_TabelView]) {
         tempD=[_timesArray_return objectAtIndex:indexPath.row];

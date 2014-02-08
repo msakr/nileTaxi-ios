@@ -56,6 +56,8 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    stationsTableView.backgroundColor = [UIColor clearColor];
+
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [self performSelectorInBackground:@selector(loadAllMaps) withObject:Nil];
@@ -132,7 +134,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"stationsCell"];
     }
-    
+    cell.backgroundColor =  [UIColor clearColor];
+
     
     ((UILabel*)[cell viewWithTag:100]).text=[[mapsArray objectAtIndex:indexPath.row] objectForKey:@"station_name"];
     

@@ -28,7 +28,7 @@
     [super viewDidLoad];
 
     appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
-        self.view.backgroundColor = [UIColor grayColor];
+        self.view.backgroundColor = [UIColor colorWithWhite: 0.90 alpha:1];
 //    self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
 //    self.tableView.backgroundColor = [UIColor colorWithRed:190 green:190 blue:190 alpha:1.0];
     

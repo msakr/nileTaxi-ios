@@ -65,7 +65,8 @@
     [dateButton setTitle:[NSString stringWithFormat:@"%@",stringDate] forState:UIControlStateNormal];
 
     
-    
+    myTripsTable.backgroundColor = [UIColor clearColor];
+
     [self performSelectorInBackground:@selector(startLoadTrips) withObject:Nil];
 
 }
@@ -125,7 +126,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TripsCell"];
     }
-    
+    cell.backgroundColor =  [UIColor clearColor];
+
     
     ((UILabel*)[cell viewWithTag:100]).text=[[tripsArray objectAtIndex:indexPath.row] objectForKey:@"trip_name"];
     

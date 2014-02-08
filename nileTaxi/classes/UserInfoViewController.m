@@ -77,7 +77,7 @@
     CGRect frm=customPickerView.frame;
     frm.origin.y=self.view.frame.size.height+10;
     customPickerView.frame=frm;
-    
+        frm.size.width=self.view.frame.size.width;
     
     [self.view addSubview:customPickerView];
 }
@@ -187,7 +187,7 @@
 - (IBAction)nextAction:(id)sender {
     
 
-    if (mobileTextField.text ==nil || mobileTextField.text.length<5) {
+    if (mobileTextField.text ==nil || mobileTextField.text.length<5 || nameTextField.text ==nil || nameTextField.text.length<5 || emailTextField.text ==nil || emailTextField.text.length<5) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"you must insert full mobile number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
         return;

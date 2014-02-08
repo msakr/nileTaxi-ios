@@ -12,6 +12,7 @@
 
 
 @implementation DBManager
+
 +(BOOL)addTicketToDBWithT_email:(NSString*)t_email andT_from_name:(NSString*)t_from_name andt_idd:(NSString*)t_idd andt_isUsed:(NSNumber *)t_isUsed andt_mobile:(NSString *)t_mobile andt_name:(NSString*)t_name andt_num_tickets:(NSString *)t_num_tickets andt_rrn:(NSString*)t_rrn andt_ticket_type:(NSString*)t_ticket_type  andt_to_name:(NSString*)t_to_name andt_trans_date:(NSString*)t_trans_date andt_trans_time:(NSString* )t_trans_time withNSManagedObjectContext:(NSManagedObjectContext*)context withErrorMessage:(NSError *)errorPtr{
 
     

@@ -20,6 +20,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     stationsArray=[Helpers getStations];
+    
+    stationTableview.backgroundColor = [UIColor clearColor];
 }
 - (void)viewDidLoad
 {
@@ -68,7 +70,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"stationsCell"];
     }
-    
+    cell.backgroundColor =  [UIColor clearColor];
     
     ((UILabel*)[cell viewWithTag:100]).text=[[stationsArray objectAtIndex:indexPath.row] objectForKey:@"station_name"];
     

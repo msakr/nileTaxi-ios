@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31206D4918A6A41900C9E6F0 /* sign_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 31206D4818A6A41900C9E6F0 /* sign_b.png */; };
+		31206D4B18A6A44F00C9E6F0 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 31206D4A18A6A44F00C9E6F0 /* logo.png */; };
+		31206D4D18A6A46000C9E6F0 /* logo_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 31206D4C18A6A46000C9E6F0 /* logo_small.png */; };
 		3120D913187EC43800F12389 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3120D912187EC43800F12389 /* Foundation.framework */; };
 		3120D915187EC43800F12389 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3120D914187EC43800F12389 /* CoreGraphics.framework */; };
 		3120D917187EC43800F12389 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3120D916187EC43800F12389 /* UIKit.framework */; };
@@ -52,6 +55,22 @@
 		3120D9A9187EDD7B00F12389 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3120D9A8187EDD7B00F12389 /* MobileCoreServices.framework */; };
 		3120D9AB187EDD8B00F12389 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3120D9AA187EDD8B00F12389 /* libz.dylib */; };
 		3120D9AE187EF9D200F12389 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 3120D9AD187EF9D200F12389 /* Constants.m */; };
+		3126A10E18A66007004B6364 /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10318A66007004B6364 /* bar.png */; };
+		3126A10F18A66007004B6364 /* book.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10418A66007004B6364 /* book.png */; };
+		3126A11018A66007004B6364 /* e7gezly-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10518A66007004B6364 /* e7gezly-logo.png */; };
+		3126A11118A66007004B6364 /* main-bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10618A66007004B6364 /* main-bg.jpg */; };
+		3126A11218A66007004B6364 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10718A66007004B6364 /* map.png */; };
+		3126A11318A66007004B6364 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10818A66007004B6364 /* menu.png */; };
+		3126A11418A66007004B6364 /* NileTaxi-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10918A66007004B6364 /* NileTaxi-logo.png */; };
+		3126A11518A66007004B6364 /* pro-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10A18A66007004B6364 /* pro-1.png */; };
+		3126A11618A66007004B6364 /* pro-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10B18A66007004B6364 /* pro-2.png */; };
+		3126A11718A66007004B6364 /* re.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10C18A66007004B6364 /* re.png */; };
+		3126A11818A66007004B6364 /* scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A10D18A66007004B6364 /* scan.png */; };
+		3126A11C18A66E6E004B6364 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126A11B18A66E6E004B6364 /* CustomNavigationBar.m */; };
+		3126A12018A670D1004B6364 /* CustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126A11F18A670D1004B6364 /* CustomView.m */; };
+		3126A12418A6767E004B6364 /* CustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3126A12318A6767E004B6364 /* CustomViewController.m */; };
+		3126A12718A67B99004B6364 /* btn.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A12518A67B99004B6364 /* btn.png */; };
+		3126A12818A67B99004B6364 /* btn-hover.png in Resources */ = {isa = PBXBuildFile; fileRef = 3126A12618A67B99004B6364 /* btn-hover.png */; };
 		312A898E18857BA3003563C7 /* CustomPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 312A898D18857BA3003563C7 /* CustomPicker.m */; };
 		312A899018857BB5003563C7 /* CustomPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 312A898F18857BB5003563C7 /* CustomPicker.xib */; };
 		3133115018A5117F00F9C057 /* MainBookingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3133114F18A5117F00F9C057 /* MainBookingViewController.m */; };
@@ -88,6 +107,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31206D4818A6A41900C9E6F0 /* sign_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sign_b.png; sourceTree = "<group>"; };
+		31206D4A18A6A44F00C9E6F0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		31206D4C18A6A46000C9E6F0 /* logo_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo_small.png; sourceTree = "<group>"; };
 		3120D90F187EC43800F12389 /* nileTaxi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nileTaxi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3120D912187EC43800F12389 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3120D914187EC43800F12389 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,6 +191,25 @@
 		3120D9AA187EDD8B00F12389 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		3120D9AC187EF9D200F12389 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = classes/Constants.h; sourceTree = "<group>"; };
 		3120D9AD187EF9D200F12389 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = classes/Constants.m; sourceTree = "<group>"; };
+		3126A10318A66007004B6364 /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		3126A10418A66007004B6364 /* book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = book.png; sourceTree = "<group>"; };
+		3126A10518A66007004B6364 /* e7gezly-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "e7gezly-logo.png"; sourceTree = "<group>"; };
+		3126A10618A66007004B6364 /* main-bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "main-bg.jpg"; sourceTree = "<group>"; };
+		3126A10718A66007004B6364 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
+		3126A10818A66007004B6364 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		3126A10918A66007004B6364 /* NileTaxi-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NileTaxi-logo.png"; sourceTree = "<group>"; };
+		3126A10A18A66007004B6364 /* pro-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pro-1.png"; sourceTree = "<group>"; };
+		3126A10B18A66007004B6364 /* pro-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pro-2.png"; sourceTree = "<group>"; };
+		3126A10C18A66007004B6364 /* re.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = re.png; sourceTree = "<group>"; };
+		3126A10D18A66007004B6364 /* scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan.png; sourceTree = "<group>"; };
+		3126A11A18A66E6E004B6364 /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomNavigationBar.h; path = classes/CustomNavigationBar.h; sourceTree = "<group>"; };
+		3126A11B18A66E6E004B6364 /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomNavigationBar.m; path = classes/CustomNavigationBar.m; sourceTree = "<group>"; };
+		3126A11E18A670D1004B6364 /* CustomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomView.h; path = classes/CustomView.h; sourceTree = "<group>"; };
+		3126A11F18A670D1004B6364 /* CustomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomView.m; path = classes/CustomView.m; sourceTree = "<group>"; };
+		3126A12218A6767E004B6364 /* CustomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomViewController.h; path = classes/CustomViewController.h; sourceTree = "<group>"; };
+		3126A12318A6767E004B6364 /* CustomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomViewController.m; path = classes/CustomViewController.m; sourceTree = "<group>"; };
+		3126A12518A67B99004B6364 /* btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn.png; sourceTree = "<group>"; };
+		3126A12618A67B99004B6364 /* btn-hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-hover.png"; sourceTree = "<group>"; };
 		312A898C18857BA3003563C7 /* CustomPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPicker.h; path = classes/CustomPicker.h; sourceTree = "<group>"; };
 		312A898D18857BA3003563C7 /* CustomPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPicker.m; path = classes/CustomPicker.m; sourceTree = "<group>"; };
 		312A898F18857BB5003563C7 /* CustomPicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomPicker.xib; path = classes/CustomPicker.xib; sourceTree = "<group>"; };
@@ -278,6 +319,8 @@
 		3120D918187EC43800F12389 /* nileTaxi */ = {
 			isa = PBXGroup;
 			children = (
+				3126A12918A680E6004B6364 /* iPad */,
+				3126A10218A65FDD004B6364 /* imgs */,
 				3133E1221882D52E0090B508 /* viewControllers */,
 				3120D996187ED01200F12389 /* managers */,
 				3120D94B187ECDED00F12389 /* libs */,
@@ -445,6 +488,63 @@
 			name = dataBase;
 			sourceTree = "<group>";
 		};
+		3126A10218A65FDD004B6364 /* imgs */ = {
+			isa = PBXGroup;
+			children = (
+				31206D4818A6A41900C9E6F0 /* sign_b.png */,
+				3126A12518A67B99004B6364 /* btn.png */,
+				31206D4A18A6A44F00C9E6F0 /* logo.png */,
+				3126A12618A67B99004B6364 /* btn-hover.png */,
+				3126A10318A66007004B6364 /* bar.png */,
+				3126A10418A66007004B6364 /* book.png */,
+				3126A10518A66007004B6364 /* e7gezly-logo.png */,
+				3126A10618A66007004B6364 /* main-bg.jpg */,
+				31206D4C18A6A46000C9E6F0 /* logo_small.png */,
+				3126A10718A66007004B6364 /* map.png */,
+				3126A10818A66007004B6364 /* menu.png */,
+				3126A10918A66007004B6364 /* NileTaxi-logo.png */,
+				3126A10A18A66007004B6364 /* pro-1.png */,
+				3126A10B18A66007004B6364 /* pro-2.png */,
+				3126A10C18A66007004B6364 /* re.png */,
+				3126A10D18A66007004B6364 /* scan.png */,
+			);
+			name = imgs;
+			sourceTree = "<group>";
+		};
+		3126A11918A66E52004B6364 /* customNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				3126A11A18A66E6E004B6364 /* CustomNavigationBar.h */,
+				3126A11B18A66E6E004B6364 /* CustomNavigationBar.m */,
+			);
+			name = customNavigationBar;
+			sourceTree = "<group>";
+		};
+		3126A11D18A670B1004B6364 /* customView */ = {
+			isa = PBXGroup;
+			children = (
+				3126A11E18A670D1004B6364 /* CustomView.h */,
+				3126A11F18A670D1004B6364 /* CustomView.m */,
+			);
+			name = customView;
+			sourceTree = "<group>";
+		};
+		3126A12118A67660004B6364 /* customViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3126A12218A6767E004B6364 /* CustomViewController.h */,
+				3126A12318A6767E004B6364 /* CustomViewController.m */,
+			);
+			name = customViewController;
+			sourceTree = "<group>";
+		};
+		3126A12918A680E6004B6364 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		312A898B18857B79003563C7 /* customViewPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +594,9 @@
 		3133E1221882D52E0090B508 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				3126A12118A67660004B6364 /* customViewController */,
+				3126A11D18A670B1004B6364 /* customView */,
+				3126A11918A66E52004B6364 /* customNavigationBar */,
 				3143D12618917D6300F179B0 /* scan */,
 				312A898B18857B79003563C7 /* customViewPicker */,
 				3133E13F1882FD8B0090B508 /* book */,
@@ -717,12 +820,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3126A11718A66007004B6364 /* re.png in Resources */,
 				3120D92B187EC43800F12389 /* Images.xcassets in Resources */,
+				3126A11518A66007004B6364 /* pro-1.png in Resources */,
 				3133E1331882E82C0090B508 /* Tsonoqua Mask.gif in Resources */,
+				3126A11018A66007004B6364 /* e7gezly-logo.png in Resources */,
 				3120D91D187EC43800F12389 /* InfoPlist.strings in Resources */,
 				3133E1351882E9140090B508 /* a.png in Resources */,
+				3126A11418A66007004B6364 /* NileTaxi-logo.png in Resources */,
+				31206D4D18A6A46000C9E6F0 /* logo_small.png in Resources */,
+				3126A11818A66007004B6364 /* scan.png in Resources */,
+				3126A12818A67B99004B6364 /* btn-hover.png in Resources */,
+				3126A11218A66007004B6364 /* map.png in Resources */,
+				31206D4B18A6A44F00C9E6F0 /* logo.png in Resources */,
+				3126A11118A66007004B6364 /* main-bg.jpg in Resources */,
+				3126A10E18A66007004B6364 /* bar.png in Resources */,
+				3126A12718A67B99004B6364 /* btn.png in Resources */,
+				3126A11318A66007004B6364 /* menu.png in Resources */,
 				312A899018857BB5003563C7 /* CustomPicker.xib in Resources */,
+				3126A10F18A66007004B6364 /* book.png in Resources */,
 				3120D926187EC43800F12389 /* Main.storyboard in Resources */,
+				3126A11618A66007004B6364 /* pro-2.png in Resources */,
+				31206D4918A6A41900C9E6F0 /* sign_b.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -752,11 +871,14 @@
 				31680273188EE5DD0012A596 /* MBProgressHUD.m in Sources */,
 				3120D9A0187ED4B400F12389 /* DBManager.m in Sources */,
 				319D42F2189925E300EE9CBF /* SelectSationsViewController.m in Sources */,
+				3126A12418A6767E004B6364 /* CustomViewController.m in Sources */,
+				3126A12018A670D1004B6364 /* CustomView.m in Sources */,
 				3120D929187EC43800F12389 /* nilecodeViewController.m in Sources */,
 				319D42681895420600EE9CBF /* ScanViewController.m in Sources */,
 				3133E1421882FD9C0090B508 /* BookViewController.m in Sources */,
 				3133E13A1882FD5F0090B508 /* SyncViewController.m in Sources */,
 				312A898E18857BA3003563C7 /* CustomPicker.m in Sources */,
+				3126A11C18A66E6E004B6364 /* CustomNavigationBar.m in Sources */,
 				3120D980187ECE0C00F12389 /* ASIAuthenticationDialog.m in Sources */,
 				319D431B189D883400EE9CBF /* UserInfoViewController.m in Sources */,
 				3120D992187ECE0C00F12389 /* SBJsonTokeniser.m in Sources */,
@@ -914,15 +1036,16 @@
 		3120D942187EC43900F12389 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "nileTaxi/nileTaxi-Prefix.pch";
 				INFOPLIST_FILE = "nileTaxi/nileTaxi-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -930,15 +1053,16 @@
 		3120D943187EC43900F12389 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "nileTaxi/nileTaxi-Prefix.pch";
 				INFOPLIST_FILE = "nileTaxi/nileTaxi-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -82,5 +82,22 @@ NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         return nil;
     }
 }
++(void)saveLastUpdatedHomeScreen:(NSString*)lastUpdated
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:lastUpdated forKey:@"lastUpdatedHome"];
+    
+    
+    [defaults synchronize];
+}
++(NSString*)getLastUpdatedHomeScreen
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    return    [defaults objectForKey:@"lastUpdatedHome"];
+
+}
+
+
+
 
 @end

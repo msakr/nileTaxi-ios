@@ -100,13 +100,22 @@
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
                                    initWithManagedObjectModel:[self managedObjectModel]];
+    
+    NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+    						 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+    						 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+    
     if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
+                                                  configuration:nil URL:storeUrl options:options error:&error]) {
         /*Error for store creation should be handled in here*/
     }
     
     return _persistentStoreCoordinator;
-}
+    
+    
+   
+    
+  }
 
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
