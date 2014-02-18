@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SWRevealViewController.h"
+//#import "SWRevealViewController.h"
 @interface LogInViewController : UIViewController<UITextFieldDelegate>
 {
 

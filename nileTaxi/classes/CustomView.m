@@ -27,8 +27,8 @@
 {
     // Drawing code
     
-    UIImage *navBg = [UIImage imageNamed:@"main-bg.jpg"];
-    [navBg drawInRect:rect];
+//    UIImage *navBg = [UIImage imageNamed:@"main-bg.jpg"];
+//    [navBg drawInRect:rect];
 }
 
 

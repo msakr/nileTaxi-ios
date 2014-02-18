@@ -186,7 +186,7 @@
 
     
     if (errorPtr==nil) {
-        return YES;
+//        return YES;
     }else{
         return NO;
     }

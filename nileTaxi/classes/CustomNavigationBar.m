@@ -25,9 +25,11 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+//    [self setBackgroundImage:[UIImage imageNamed: @"bar.png"]
+//                                                  forBarMetrics:UIBarMetricsDefault];
     
     // Drawing code
-    UIImage *navBg = [UIImage imageNamed:@"bar.png"];
+    UIImage *navBg = [UIImage imageNamed:@"bar_yello.png"];
     [navBg drawInRect:rect];
 }
 

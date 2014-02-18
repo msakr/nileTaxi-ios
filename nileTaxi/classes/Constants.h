@@ -39,8 +39,11 @@
 #define booking_trips @"trips"
 
 
-#define trip_type_Express 1
-#define trip_type_Oncall 2
+#define trip_type_Express 2
+#define trip_type_Oncall 1
 #define trip_type_Trips 3
+
+
+#define REMOVENULL(STR) ((STR==nil|| [STR isEqualToString:@""])?@"A":STR)
 
 @end

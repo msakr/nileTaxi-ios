@@ -149,8 +149,8 @@
     
     
     selectedTrip=[tripsArray objectAtIndex:indexPath.row];
-    
-    if (((NSNumber*)[selectedTrip objectForKey:@"remain_number_of_tickets"]).intValue<=0) {
+    /////// modify =
+    if (((NSNumber*)[selectedTrip objectForKey:@"remain_number_of_tickets"]).intValue<0) {
         
         
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"out of tickets" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles: nil];

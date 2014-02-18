@@ -30,19 +30,30 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [Helpers logOutUser];
+    
+    [self.navigationController.navigationBar setHidden:YES];
+    [self.navigationItem setHidesBackButton:YES animated:YES];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [_sidebarButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-        // Set the gesture
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    
+//    [_sidebarButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+//        // Set the gesture
+//    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+//    
     
     [userNameTxtField setLeftViewMode:UITextFieldViewModeAlways];
-    userNameTxtField.leftView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"a.png"]];
+    
+    UIImageView *ii=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sign_b.png"]];
+    [ii setContentMode:UIViewContentModeScaleToFill];
+//    userNameTxtField.leftView= ii;
+    
+    [self.view viewWithTag:1].layer.borderColor = [UIColor colorWithRed:32 green:0 blue:21 alpha:1.0].CGColor;
+    [self.view viewWithTag:1].layer.borderWidth=1;
+    [self.view viewWithTag:1].layer.cornerRadius=4;
+    
 //    userNameTxtField.background=[UIImage imageNamed:@"Tsonoqua Mask.gif"];
     
 //
@@ -84,13 +95,18 @@
     
     if (userNameTxtField.text==nil || userNameTxtField.text.length<=2) {
         //display Error
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *err=[[UIAlertView alloc]initWithTitle:@"Error" message:@"You must enter UserName" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
 
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [err show];
         
         
     }else if(passwordTxtField.text==nil || passwordTxtField.text.length<=2) {
         //display Error
+        UIAlertView *err=[[UIAlertView alloc]initWithTitle:@"Error" message:@"You must enter password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [err show];
 
 
     }else{

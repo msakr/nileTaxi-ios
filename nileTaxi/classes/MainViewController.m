@@ -29,10 +29,40 @@
     return self;
 }
 
+
+- (UIImage*) maskImage:(UIImage *)image withMask:(UIImage *)maskImage {
+    
+    CGImageRef maskRef = maskImage.CGImage;
+    
+    CGImageRef mask = CGImageMaskCreate(CGImageGetWidth(maskRef),
+                                        CGImageGetHeight(maskRef),
+                                        CGImageGetBitsPerComponent(maskRef),
+                                        CGImageGetBitsPerPixel(maskRef),
+                                        CGImageGetBytesPerRow(maskRef),
+                                        CGImageGetDataProvider(maskRef), NULL, false);
+    
+    CGImageRef maskedImageRef = CGImageCreateWithMask([image CGImage], mask);
+    UIImage *maskedImage = [UIImage imageWithCGImage:maskedImageRef];
+    
+    CGImageRelease(mask);
+    CGImageRelease(maskedImageRef);
+    
+    // returns new image with mask applied
+    return maskedImage;
+}
 - (void)viewDidLoad
 {
+    
+    
     [super viewDidLoad];
     
+    
+//    
+//    if (!((nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate]).isLogin) {
+//        [self performSegueWithIdentifier:@"showLogIn" sender:self];
+//        return;
+//        
+//    }
     customPickerView=[[[NSBundle mainBundle] loadNibNamed:@"CustomPicker" owner:self options:nil] objectAtIndex:0];
     customPickerView.callerDelegate=self;
     
@@ -87,16 +117,148 @@
         default:
             break;
     }
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    [self performSelectorOnMainThread:@selector(loadAllStationsAndTimesAndDirectoins) withObject:nil waitUntilDone:NO];
+    
+    if ([Helpers getToken]!=nil) {
+
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self performSelectorOnMainThread:@selector(loadAllStationsAndTimesAndDirectoins) withObject:nil waitUntilDone:NO];
+        
+        
+        
+    }
+
     
     
     
     
 }
 
+
+
+-(void)drawPercent:(CGFloat)percent forImageView:(UIImageView*)imageView{
+    
+    UIImage *bottomImage =[UIImage imageNamed:@"progressbar_empty.jpg"];
+    UIImage *image = [UIImage imageNamed:@"progressbar_full.jpg"];
+    
+
+    
+//    bottomImage=[self imageByCropping:bottomImage toRect:CGRectMake(0, 0, bottomImage.size.width, bottomImage.size.height)];
+//    
+//    image=[self imageByCropping:image toRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    
+    
+    CGSize newSize = CGSizeMake(imageView.frame.size.width, imageView.frame.size.height);
+    UIGraphicsBeginImageContext( newSize );
+    
+    
+    
+    // Use existing opacity as is
+//    [bottomImage drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    // Apply supplied opacity
+    
+    
+    //
+    //    CGImageRef imageRef = CGImageCreateWithImageInRect([image CGImage], CGRectMake(0, 0, image.size.width*2.0f*percent, image.size.height*2));
+    //    // or use the UIImage wherever you like
+    //    image=[UIImage imageWithCGImage:imageRef];
+    //    CGImageRelease(imageRef);
+    
+    image=[MainViewController imageWithImage:image scaledToSize:newSize];
+    bottomImage=[MainViewController imageWithImage:bottomImage scaledToSize:newSize];
+
+    
+    bottomImage=[self imageByCropping:bottomImage toRect:CGRectMake(newSize.width*percent, 0, newSize.width*(1.0-percent), newSize.height)];
+
+    [bottomImage drawInRect:CGRectMake(newSize.width*percent, 0, newSize.width*(1.0-percent), newSize.height)];
+
+
+//    CGRect cc=CGRectMake(0, 0, newSize.width*percent, newSize.height);
+    
+                         
+    image=[self imageByCropping:image toRect:CGRectMake(0, 0, newSize.width*percent+1, newSize.height)];
+    
+
+    [image drawInRect:CGRectMake(0,0,newSize.width*percent,newSize.height) blendMode:kCGBlendModeNormal alpha:1];
+    
+
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+   
+    
+    [imageView setImage:newImage];
+    
+    UIGraphicsEndImageContext();
+}
+
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
+    //UIGraphicsBeginImageContext(newSize);
+    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+    // Pass 1.0 to force exact pixel size.
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+- (UIImage *)imageByCropping:(UIImage *)image toRect:(CGRect)rect
+{
+    if (UIGraphicsBeginImageContextWithOptions) {
+        UIGraphicsBeginImageContextWithOptions(rect.size,
+                                               /* opaque */ NO,
+                                               /* scaling factor */ 0.0);
+    } else {
+        UIGraphicsBeginImageContext(rect.size);
+    }
+    
+    // stick to methods on UIImage so that orientation etc. are automatically
+    // dealt with for us
+    [image drawAtPoint:CGPointMake(-rect.origin.x, -rect.origin.y)];
+    
+    UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return result;
+}
 -(void)viewWillAppear:(BOOL)animated{
+    
+    [self.navigationController.navigationBar setHidden:NO];
+
+    if ([Helpers getToken]==nil) {
+        [self performSegueWithIdentifier:@"showLogIn" sender:self];
+        return;
+
+    }
+    
+    
+    
+    
+    float f=usedTicketsNumber/(allTicketsNumber==0?1:allTicketsNumber);
+    
+    [self drawPercent:f forImageView:progressImageView];
+    _numberPassengersLabel.text=[NSString stringWithFormat:@"%i/%i",usedTicketsNumber,allTicketsNumber];
+
+//    UIImage *EmptyIMAGE = [UIImage imageNamed:@"boat_gray.png"];
+//    UIImage *progressIMAGE = [UIImage imageNamed:@"boat_blue.png"];
+    
+    // result of the masking method
+//    UIImage *maskedImage = [self maskImage:image withMask:mask];
+
+//    UIProgr?]
+   
+
+//    [progresss setMeterType:DPMeterTypeLinearHorizontal];
+//    [progresss setShape:[UIBezierPath stars:5 shapeInFrame:progresss.bounds].CGPath];
+//
+//    CGRect imgFrame = CGRectMake(0, 0, progressIMAGE.size.width, progressImage.frame.size.height);
+//    CGImageRef imageRef = CGImageCreateWithImageInRect([progressIMAGE CGImage], imgFrame);
+//    UIImage* subImage = [UIImage imageWithCGImage: imageRef];
+//    CGImageRelease(imageRef);
+//    
+//    [progressImage setImage:subImage];
+
+    
+//        [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"bar.png"] forBarMetrics:UIBarMetricsDefault];
+    
     [_sidebarButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     //
     //    _sidebarButton.target = self.revealViewController;
@@ -115,7 +277,6 @@
     _userNameLabel.text=([Helpers getName]==nil?@"":[Helpers getName]);
     
     
-
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -141,7 +302,9 @@
         case stationsCode:
             [_stationsButton setTitle:[selectedItem  objectForKey:@"station_name"] forState:UIControlStateNormal];
             
+//            selectedStationindex=[stationsArray fi]
             selectedStationObject=[[NSDictionary alloc]initWithDictionary:selectedItem];
+            [self refreshAction:nil];
             break;
             
         default:
@@ -187,6 +350,10 @@
         selectedStationObject=[[NSDictionary alloc]initWithDictionary:[stationsArray objectAtIndex:0]];
         
         [Helpers addStationS:stationsArray];
+        
+        [self refreshAction:Nil];
+        
+        
         
     }else{
         [_stationsButton setTitle:@"NO Stations Available" forState:UIControlStateNormal ];
@@ -260,6 +427,12 @@
 }
 - (IBAction)showStationsAction:(id)sender {
     if (stationsArray==Nil || stationsArray.count<=0) {
+
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        
+        [self performSelectorInBackground:@selector(loadAllStationsAndTimesAndDirectoins) withObject:nil];
+        
+
         return;
     }
     [self enableOrDisablAll:NO];
@@ -287,6 +460,7 @@
     
     NSError *errorDB;
     NSMutableArray *usedTicketsIds=[DBManager getAllUsedTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDB];
+    
     
     
     if (errorDB!=nil) {
@@ -367,9 +541,73 @@
     _lastUpdateLabel.text=[NSString stringWithFormat:@"Successfully updated @%@",stringDate];
     
     
+    
+    ///// handle the progress bar
+    
+    NSError *errorDBForCounting=nil;
+
+    
+    
+    usedTicketsNumber=[DBManager getAllUsedTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDBForCounting].count;
+    
+    if (errorDBForCounting!=nil) {
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertNO show];
+        
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        return;
+    }
+    
+    allTicketsNumber=[DBManager getAllTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDBForCounting].count;
+    if (errorDBForCounting!=nil) {
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertNO show];
+        
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        return;
+    }
+    
+    float f=usedTicketsNumber*1.0/(allTicketsNumber*1.0==0.0?1:allTicketsNumber*1.0);
+    
+    [self drawPercent:f forImageView:progressImageView];
+    
+    _numberPassengersLabel.text=[NSString stringWithFormat:@"%i/%i",usedTicketsNumber,allTicketsNumber];
+    
+    
+    
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
     
 }
 
+- (IBAction)goNextStation:(id)sender {
+//    NSArray* aa=[stationsArray filteredArrayUsingPredicate:[NSPredicate                                                             predicateWithFormat:@"self == %@", selectedStationObject]];
+    
+    
+    int ind=[stationsArray indexOfObject:selectedStationObject]+1;
+    
+    
+    if (ind>-1 && ind< stationsArray.count) {
+        [self itemSelected:[stationsArray objectAtIndex:ind] forComponentCode:stationsCode];
+
+    }
+    
+    
+}
+
+- (IBAction)goPreviousStation:(id)sender {
+    
+    int ind=[stationsArray indexOfObject:selectedStationObject]-1;
+    
+    
+    if (ind>-1 && ind< stationsArray.count) {
+        [self itemSelected:[stationsArray objectAtIndex:ind] forComponentCode:stationsCode];
+        
+    }
+
+}
 @end

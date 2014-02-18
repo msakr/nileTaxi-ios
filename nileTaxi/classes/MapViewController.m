@@ -28,6 +28,7 @@
 {
     [super viewDidLoad];
 
+    [stationsTableView setContentInset:UIEdgeInsetsMake(-20,0,0,0)];
     
     [_sidebarButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     // Set the gesture
@@ -49,9 +50,9 @@
 
 -(void)viewDidLayoutSubviews
 {
-    if ([stationsTableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        [stationsTableView setSeparatorInset:UIEdgeInsetsZero];
-    }
+//    if ([stationsTableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        [stationsTableView setSeparatorInset:UIEdgeInsetsZero];
+//    }
 }
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -87,7 +88,10 @@
     
     if (tempArray==nil && tempError!=nil) {
         UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:tempError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         [alertNO show];
+        
         return;
     }
     
@@ -139,9 +143,15 @@
     
     ((UILabel*)[cell viewWithTag:100]).text=[[mapsArray objectAtIndex:indexPath.row] objectForKey:@"station_name"];
     
-     ((UILabel*)[cell viewWithTag:102]).text=[NSString stringWithFormat:@"waiting passengers %@",[[mapsArray objectAtIndex:indexPath.row] objectForKey:@"passengers"]];
     
-
+    
+    
+    ((UILabel*)[cell viewWithTag:100]).lineBreakMode = NSLineBreakByWordWrapping;
+    ((UILabel*)[cell viewWithTag:100]).numberOfLines = 0;
+    
+     ((UILabel*)[cell viewWithTag:102]).text=[NSString stringWithFormat:@"%@",[[mapsArray objectAtIndex:indexPath.row] objectForKey:@"passengers"]];
+    ((UILabel*)[cell viewWithTag:102]).layer.borderWidth=2;
+    ((UILabel*)[cell viewWithTag:102]).layer.borderColor=[UIColor colorWithRed:32/255 green:0/255 blue:23/255 alpha:1].CGColor;
     // Configure the cell...
     
     return cell;

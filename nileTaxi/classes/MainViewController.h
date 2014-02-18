@@ -8,20 +8,30 @@
 
 #import <UIKit/UIKit.h>
 #import "CustomPicker.h"
+#import "DPMeterView.h"
+#import "UIBezierPath+BasicShapes.h"
 #define stationsCode 1
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<SelectPickerDelegate>
 {
+    
+    NSUInteger usedTicketsNumber;
+    NSUInteger allTicketsNumber;
     
     
     CustomPicker *customPickerView;
 
     NSMutableArray *stationsArray;
     
+    __weak IBOutlet UIImageView *progressImageView;
     
+
     NSDictionary *selectedStationObject;
-   
+    NSUInteger *selectedStationindex;
+
 }
+- (IBAction)goNextStation:(id)sender;
+- (IBAction)goPreviousStation:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;

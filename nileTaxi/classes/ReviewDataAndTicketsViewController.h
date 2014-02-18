@@ -15,6 +15,8 @@
     
 }
 
+- (IBAction)bookAction:(id)sender;
+
 @property NSUInteger TripType;
 @property (nonatomic,strong) NSMutableDictionary *alldata;
 @end

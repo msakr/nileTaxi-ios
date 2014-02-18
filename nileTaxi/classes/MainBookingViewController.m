@@ -48,6 +48,7 @@
         ((SelectSationsViewController*)segue.destinationViewController).title=@"From";
 
         
+        
         ((SelectSationsViewController*)segue.destinationViewController).TripType=trip_type_Express;
     }else if ([[segue identifier] isEqualToString:@"onCall"]) {
         ((SelectSationsViewController*)segue.destinationViewController).ScreenID=1;
@@ -55,6 +56,9 @@
 
         ((SelectSationsViewController*)segue.destinationViewController).TripType=trip_type_Oncall;
     }
+    
+    
+    
     
     
     

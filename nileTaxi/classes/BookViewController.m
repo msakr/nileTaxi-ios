@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "WebServiceManagerAPI.h"
 #import "SelectTimeViewController.h"
+#import "UserInfoViewController.h"
 
 @interface BookViewController ()
 
@@ -202,8 +203,13 @@
     
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
-    [self performSegueWithIdentifier:@"selectTimes" sender:self];
     
+    if (_TripType==trip_type_Oncall) {
+        [self performSegueWithIdentifier:@"oncallWithReview" sender:self];
+
+    }else{
+        [self performSegueWithIdentifier:@"selectTimes" sender:self];
+    }
 }
 
 #pragma mark -buttons Action
@@ -340,7 +346,61 @@
         }
 
         
+    }else if ([[segue identifier] isEqualToString:@"oncallWithReview"]) {
+        
+        
+        NSMutableDictionary *allD=[[NSMutableDictionary alloc]init];
+        
+        
+        NSString *reservationDate=[NSString stringWithFormat:@"%i",(int)[selectedDateTrip timeIntervalSince1970]];
+        NSString *returnDatee=[NSString stringWithFormat:@"%i",(int)[selectedDateTripRound timeIntervalSince1970]];
+        
+        
+        [allD setObject:reservationDate forKey:booking_ReservationDate];
+        [allD setObject:returnDatee      forKey:booking_ReturnDate];
+        
+        
+//        ((SelectTimeViewController *)segue.destinationViewController).timesArray_reservation=[[NSArray alloc]initWithArray:[timesDic objectForKey:@"time"]];
+        
+//        ((SelectTimeViewController *)segue.destinationViewController).TripType=_TripType;
+        
+        [allD setObject:_stationFrom forKey:booking_stationFrom];
+        [allD setObject:_stationTo forKey:booking_stationTo];
+        [allD setObject:[NSNumber numberWithBool:roundTripSwitch.isOn] forKey:booking_isRound];
+        
+//        ((SelectTimeViewController *)segue.destinationViewController).allData=allD;
+        
+        
+//        if (roundTripSwitch.isOn) {
+//            ((SelectTimeViewController *)segue.destinationViewController).timesArray_return=[[NSArray alloc]initWithArray:[timesDic objectForKey:@"return_time"]];
+//            ((SelectTimeViewController *)segue.destinationViewController).isRound=YES;
+//        }else{
+//            ((SelectTimeViewController *)segue.destinationViewController).timesArray_return=nil;
+//            ((SelectTimeViewController *)segue.destinationViewController).isRound=NO;
+//        }
+        
+        
+        
+        
+        /////
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        ///////
+        
+        ((UserInfoViewController*)segue.destinationViewController).allData=allD;
+        ((UserInfoViewController*)segue.destinationViewController).TripType=_TripType;
+
+        
+        
     }
+
     
     
     

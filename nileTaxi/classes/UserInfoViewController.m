@@ -32,11 +32,11 @@
 
     
     selectedNumberOfTickets=@-1;
-    
+    [goTicketNumberButton setTitle:@"Number Of Tickets" forState:UIControlStateNormal];
     
     if (_TripType==trip_type_Trips) {
         
-        int maxNumber=    ((NSNumber*)[[_allData objectForKey:booking_trips]objectForKey:@"remain_number_of_tickets"]).intValue;
+        int maxNumber=    ((NSNumber*)[[_allData objectForKey:booking_trips]objectForKey:@"remain_number_of_tickets"]).intValue/*modify Add*/+1;
         
         
         for (int i=1; i<=maxNumber; i++) {
@@ -44,15 +44,15 @@
             [TicketsNumberArrayGO addObject:[NSNumber numberWithInt:i]];
             
         }
-    }else{
+    }else if(_TripType==trip_type_Express){
     NSNumber *numberOfticketsGO=[[_allData objectForKey:booking_reservationTime ] objectForKey:@"remining_quota"];
     
-    NSNumber *numberOfticketsReturn=[[_allData objectForKey:booking_returnTime ] objectForKey:@"remining_quota"];
+        NSNumber *numberOfticketsReturn=(((NSNumber*)[_allData objectForKey:booking_isRound]).boolValue?[[_allData objectForKey:booking_returnTime ] objectForKey:@"remining_quota"]:numberOfticketsGO);
 
             TicketsNumberArrayGO=[[NSMutableArray alloc]init];
 
     
-    int maxNumber=    (numberOfticketsGO.intValue<numberOfticketsReturn.intValue ? numberOfticketsGO.intValue:numberOfticketsReturn.intValue);
+    long maxNumber=    (numberOfticketsGO.intValue<numberOfticketsReturn.longValue ? numberOfticketsGO.longValue:numberOfticketsReturn.longValue);
     
     
     for (int i=1; i<=maxNumber; i++) {
@@ -60,6 +60,22 @@
         [TicketsNumberArrayGO addObject:[NSNumber numberWithInt:i]];
         
     }
+    }else if(_TripType==trip_type_Oncall){
+//        NSNumber *numberOfticketsGO=[NSNumber numberWithInt:10000];
+        
+//        NSNumber *numberOfticketsReturn=(((NSNumber*)[_allData objectForKey:booking_isRound]).boolValue?[[_allData objectForKey:booking_returnTime ] objectForKey:@"remining_quota"]:numberOfticketsGO);
+        
+        TicketsNumberArrayGO=[[NSMutableArray alloc]init];
+        
+        
+        long maxNumber=    10000;
+        
+        
+        for (int i=5; i<=maxNumber; i++) {
+            
+            [TicketsNumberArrayGO addObject:[NSNumber numberWithInt:i]];
+            
+        }
     }
     
 }
@@ -109,7 +125,6 @@
 -(void)startServiceGetPrice
 {
 
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
 //    NSDictionary*dd=_allData;
     NSError *tempError;
@@ -126,9 +141,26 @@
     
     NSString *resrvationDatee=[_allData objectForKey:booking_ReservationDate];
     NSString *returnDatee=[_allData objectForKey:booking_ReturnDate];
-    
+    NSString *tripsJson=@"";
+    if (_TripType==trip_type_Trips) {
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:[_allData objectForKey:booking_trips]
+                                                           options:0
+                                                             error:&error];
+        
+        if (!jsonData) {
+            NSLog(@"errro parsing nsdictinary to json str");
+        } else {
+            
+            tripsJson = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+//            NSLog(@&quot;JSON OUTPUT: %@&quot;,JSONString);
+
+        }
+        
+        
+    }
    
-    NSString *price =[WebServiceManagerAPI getPriceWithFrom_station:stationFromID andTo_station:stationToID andTicket_type:Type andNumber_of_tickets:numberOfTickets andReservationDate:resrvationDatee andFromTime:fromTimeID andToTime:toTimeID andReturnDate:returnDatee WithErrorMessage:&tempError];
+    NSString *price =[WebServiceManagerAPI getPriceWithFrom_station:stationFromID andTo_station:stationToID andTicket_type:Type andNumber_of_tickets:numberOfTickets andReservationDate:resrvationDatee andFromTime:fromTimeID andToTime:toTimeID andReturnDate:returnDatee andTripsJson:tripsJson WithErrorMessage:&tempError];
     
     
     
@@ -187,7 +219,7 @@
 - (IBAction)nextAction:(id)sender {
     
 
-    if (mobileTextField.text ==nil || mobileTextField.text.length<5 || nameTextField.text ==nil || nameTextField.text.length<5 || emailTextField.text ==nil || emailTextField.text.length<5) {
+    if (mobileTextField.text ==nil || mobileTextField.text.length<5 ) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"you must insert full mobile number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
         return;
@@ -202,11 +234,17 @@
     }
     
     
+    
+//    NSString *name=REMOVENULL(nameTextField.text);
+    
         [_allData setObject:selectedNumberOfTickets forKey:booking_numberOfTickets];
-        [_allData setObject:nameTextField.text forKey:booking_name];
-        [_allData setObject:emailTextField.text forKey:booking_email];
+        [_allData setObject:REMOVENULL(nameTextField.text) forKey:booking_name];
+        [_allData setObject:REMOVENULL(emailTextField.text) forKey:booking_email];
         [_allData setObject:mobileTextField.text forKey:booking_mobileNumber];
     
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     
     [self performSelectorInBackground:@selector(startServiceGetPrice) withObject:nil];
     

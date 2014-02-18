@@ -11,7 +11,7 @@
 #import "nilecodeAppDelegate.h"
 #import "AlertView.h"
 @implementation WebServiceManagerAPI
-static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?test_mode=1&action=";
+static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?test_mode=0&action=";
 
 
 +(BOOL)logMeInWithUserName:(NSString* )userName andPassword:(NSString *)password withErrorMessage:(NSError **)errorPtr
@@ -59,6 +59,25 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return YES;
+        }else if(code==401){
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             
             NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
@@ -105,7 +124,9 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
                      
                                     userInfo:userInfo];
         
-        return nil;
+        
+        
+        return [Helpers getStations];
 
     }
     
@@ -151,6 +172,33 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultsStations;
+        }else if(code==401){
+            
+//            dispatch_sync(dispatch_get_main_queue(), ^{
+                /* Do UI work here */
+//                [self logInOnTheRun];
+            
+//            });
+            [self logInOnTheRun];
+
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+//            *errorPtr = [NSError errorWithDomain:domain
+//                         
+//                                            code:-101
+//                         
+//                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
@@ -246,6 +294,26 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultsMaps;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
@@ -339,6 +407,26 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultsTickets;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
@@ -427,12 +515,25 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultTikcket;
+        }else if(code==401){
+            [self logInOnTheRun];
+
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain  code:-101                                    userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             
-            if (code==401) {
-                [self logInOnTheRun];
-                
-            }
+            
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
             NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
@@ -459,6 +560,10 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
 
 +(void)logInOnTheRun
 {
+    
+    
+    [Helpers logOutUser];
+    
     AlertView *av = [[AlertView alloc] initWithTitle:@"Login" message:@"LogIn Please"  cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"OK"]];
     
     
@@ -497,18 +602,19 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
     [[av textFieldAtIndex:1] setPlaceholder:@"Password"];
    
     
-    dispatch_sync(dispatch_get_main_queue(), ^{
+//    dispatch_sync(dispatch_get_main_queue(), ^{
         /* Do UI work here */
         [av show];
+//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
-    });
-    
+//    });
+
 }
 
 
 
 
-+(NSString*)getPriceWithFrom_station:(NSString*)from_station andTo_station:(NSString*)to_station andTicket_type:(NSString*)ticket_type andNumber_of_tickets:(NSString*)number_of_tickets andReservationDate:(NSString*)reservationDate andFromTime:(NSString*)fromTime andToTime:(NSString*)toTime andReturnDate:(NSString *)returnDatee WithErrorMessage:(NSError **)errorPtr
++(NSString*)getPriceWithFrom_station:(NSString*)from_station andTo_station:(NSString*)to_station andTicket_type:(NSString*)ticket_type andNumber_of_tickets:(NSString*)number_of_tickets andReservationDate:(NSString*)reservationDate andFromTime:(NSString*)fromTime andToTime:(NSString*)toTime andReturnDate:(NSString *)returnDatee andTripsJson:(NSString*)tripsJson WithErrorMessage:(NSError **)errorPtr
 {
     NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
     
@@ -555,8 +661,10 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
     
 
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@get_price&from_station=%@&reservation_date=%@&to_station=%@&from_time=%@&to_time=%@&return_date=%@&number_of_tickets=%@&ticket_type=%@&token=%@",BaseURL,from_station,reservationDate,to_station,fromTime,toTime,returnDatee,number_of_tickets, ticket_type,[Helpers getToken]]]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@get_price&from_station=%@&reservation_date=%@&to_station=%@&from_time=%@&to_time=%@&return_date=%@&number_of_tickets=%@&ticket_type=%@&token=%@",BaseURL,REMOVENULL(from_station),REMOVENULL(reservationDate),REMOVENULL(to_station),REMOVENULL(fromTime),REMOVENULL(toTime),REMOVENULL(returnDatee),REMOVENULL(number_of_tickets), REMOVENULL(ticket_type),[Helpers getToken]]]];
     
+    
+    [request setPostValue:REMOVENULL(tripsJson) forKey:@"trip_json"];
     [request startSynchronous];
     NSError *error = [request error];
     NSDictionary *result = nil;
@@ -574,12 +682,29 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultPrice;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             
-            if (code==401) {
-                [self logInOnTheRun];
-                
-            }
+            
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
             NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
@@ -663,6 +788,12 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
     }
     if (return_date!=nil) {
         [request setPostValue:return_date forKey:@"return_date"];
+        
+        [request setPostValue:@"2" forKey:@"ticket_type"];
+        
+
+    }else{
+        [request setPostValue:@"1" forKey:@"ticket_type"];
 
     }
 
@@ -686,12 +817,29 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultTimes;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             
-            if (code==401) {
-                [self logInOnTheRun];
-                
-            }
+            
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
             NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
@@ -779,12 +927,255 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
             
             
             return resultTrips;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
         }else{
             
-            if (code==401) {
-                [self logInOnTheRun];
-                
-            }
+            
+            NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            return nil;
+        }
+        
+    }
+    
+    
+	return nil;
+}
+
++(NSDictionary*)bookExpressTicketWithReservation_method:(NSString*)reservation_method  andNumber_of_tickets:(NSString*)number_of_tickets andReservation_date:(NSString*)reservation_date andMobile:(NSString*)mobile andName:(NSString*)name andEmail:(NSString*)email andFromStationId:(NSString*)fromStationId andToStationId:(NSString*)tostationId andReservationTimeID:(NSString*)reservation_time_id andReturnTimeId:(NSString*)return_time_id andTicketType:(NSString*)ticketTypee WithErrorMessage:(NSError **)errorPtr
+{
+    NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
+    
+    
+    if (![self isNetworkReachable]) {
+        NSString *desc = NSLocalizedString(@"check your internet connection", @"");
+        
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+        
+        
+        
+        *errorPtr = [NSError errorWithDomain:domain
+                     
+                                        code:-101
+                     
+                                    userInfo:userInfo];
+        
+        return nil;
+        
+    }
+    
+    
+    
+    if ([Helpers getToken]==nil) {
+        
+        
+        NSString *desc = NSLocalizedString(@"You Must Login", @"");
+        
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+        
+        
+        
+        *errorPtr = [NSError errorWithDomain:domain
+                     
+                                        code:-101
+                     
+                                    userInfo:userInfo];
+        
+        return nil;
+    }
+    
+    
+    NSDictionary *resultTrips;
+    
+    
+
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@book_new_ticket&token=%@&reservation_method=%@&number_of_tickets=%@&reservation_date=%@&mobile=%@&name=%@&email=%@&from_station=%@&to_station=%@&ticket_type=%@&time=%@&return_time=%@",BaseURL,[Helpers getToken],reservation_method,number_of_tickets,reservation_date,mobile,name,email,fromStationId,tostationId,ticketTypee,reservation_time_id,return_time_id]]];
+    
+    [request startSynchronous];
+    NSError *error = [request error];
+    NSDictionary *result = nil;
+    if(error == nil) {
+        NSString *str = [request responseString];
+        result = [str JSONValue];
+        NSLog(@"%@",result);
+        int code=[(NSNumber*) [result valueForKey:@"error_code"] intValue];
+        
+        if (code==200) {
+            
+            
+            resultTrips=[result objectForKey:@"response"];
+            
+            
+            
+            return resultTrips;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
+        }else{
+            
+            
+            
+            NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            return nil;
+        }
+        
+    }
+    
+    
+	return nil;
+
+}
+
+
++(NSDictionary*)bookOnCallTicketWithReservation_method:(NSString*)reservation_method  andNumber_of_tickets:(NSString*)number_of_tickets andReservation_date:(NSString*)reservation_date andMobile:(NSString*)mobile andName:(NSString*)name andEmail:(NSString*)email andFromStationId:(NSString*)fromStationId andToStationId:(NSString*)tostationId andTicketType:(NSString*)ticketTypee WithErrorMessage:(NSError **)errorPtr
+{
+    NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
+    
+    
+    if (![self isNetworkReachable]) {
+        NSString *desc = NSLocalizedString(@"check your internet connection", @"");
+        
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+        
+        
+        
+        *errorPtr = [NSError errorWithDomain:domain
+                     
+                                        code:-101
+                     
+                                    userInfo:userInfo];
+        
+        return nil;
+        
+    }
+    
+    
+    
+    if ([Helpers getToken]==nil) {
+        
+        
+        NSString *desc = NSLocalizedString(@"You Must Login", @"");
+        
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+        
+        
+        
+        *errorPtr = [NSError errorWithDomain:domain
+                     
+                                        code:-101
+                     
+                                    userInfo:userInfo];
+        
+        return nil;
+    }
+    
+    
+    NSDictionary *resultTrips;
+    
+    
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@book_new_ticket&token=%@&reservation_method=%@&number_of_tickets=%@&reservation_date=%@&mobile=%@&name=%@&email=%@&from_station=%@&to_station=%@&ticket_type=%@",BaseURL,[Helpers getToken],reservation_method,number_of_tickets,reservation_date,mobile,name,email,fromStationId,tostationId,ticketTypee]]];
+    
+    [request startSynchronous];
+    NSError *error = [request error];
+    NSDictionary *result = nil;
+    if(error == nil) {
+        NSString *str = [request responseString];
+        result = [str JSONValue];
+        NSLog(@"%@",result);
+        int code=[(NSNumber*) [result valueForKey:@"error_code"] intValue];
+        
+        if (code==200) {
+            
+            
+            resultTrips=[result objectForKey:@"response"];
+            
+            
+            
+            return resultTrips;
+        }else if(code==401){
+            [self logInOnTheRun];
+            
+            NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");
+            
+            NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+            
+            
+            
+            *errorPtr = [NSError errorWithDomain:domain
+                         
+                                            code:-101
+                         
+                                        userInfo:userInfo];
+            
+            nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+            appDelegate.isLogin=NO;
+            
+            
+            return NO;
+        }else{
+            
+            
             NSString *domain = @"com.nilecode.e7gezly.ErrorDomain";
             
             NSString *desc = NSLocalizedString([result objectForKey:@"error_message"], @"");

@@ -7,12 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ScanViewController : UIViewController
+#import <AVFoundation/AVFoundation.h>
+#import "Ticket.h"
+#import "ZBarSDK.h"
+#import "ZBarReaderViewController.h"
+#define alert_ticketNOTfound_tag 1
+#define alert_ticketUSE_tag 2
+#define alert_ticketBook_tag 3
+@interface ScanViewController : UIViewController<UIAlertViewDelegate,ZBarReaderViewDelegate>
 {
 //    NSError *__autoreleasing* anyError;
     __weak IBOutlet UITextField *rrnTextFiled;
+    
+    __weak IBOutlet ZBarReaderView *readerView;
+    
+//    ZBarReaderView *readerView;
+    Ticket *inputTicket;
+    NSString*tempRRN;
 }
+
 @property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
 - (IBAction)SearchAction:(id)sender;
 

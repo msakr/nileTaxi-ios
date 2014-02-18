@@ -96,6 +96,12 @@
     }else if(_ScreenID==2){
         
         _toStation=[stationsArray objectAtIndex:indexPath.row];
+
+        if ([[_toStation objectForKey:@"station_id"] isEqualToString:[_fromStation objectForKey:@"station_id"]]) {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"source and destination station must not be the same" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
         [self performSegueWithIdentifier:@"nextStep" sender:self];
     }
     
@@ -110,6 +116,9 @@
     
     if ([[segue identifier] isEqualToString:@"nextStep"]) {
 //        ((BookViewController*)segue.destinationViewController).ScreenID=2;
+        
+        
+        
         ((BookViewController*)segue.destinationViewController).stationFrom=_fromStation;
         ((BookViewController*)segue.destinationViewController).stationTo=_toStation;
         ((BookViewController*)segue.destinationViewController).TripType=_TripType;

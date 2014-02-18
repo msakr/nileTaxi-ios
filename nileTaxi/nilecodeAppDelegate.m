@@ -9,6 +9,7 @@
 #import "nilecodeAppDelegate.h"
 #import "WebServiceManagerAPI.h"
 #import "Helpers.h"
+#import "ZBarReaderView.h"
 @implementation nilecodeAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -22,9 +23,10 @@
 {
     // Override point for customization after application launch.
     
-    
-    
-    splashView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default2.png"]];
+    [ZBarReaderView class];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
+    splashView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"eye.png"]];
     splashView.frame = CGRectMake(0, 0, 324, 480);
     [_window addSubview:splashView];
     [_window bringSubviewToFront:splashView];
@@ -36,8 +38,13 @@
         _isLogin=NO;
     }
     
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:32/255 green:0/255 blue:23/255 alpha:1], UITextAttributeTextColor,nil]
+                                                                                            forState:UIControlStateNormal];
     
-    [self performSelector:@selector(removeSplash) withObject:nil afterDelay:1500.2];
+    
+//    self.window.backgroundColor = [UIColor colorWithRed:0.78f green:0.13f blue:0.11f alpha:1];
+//    [application setStatusBarStyle:UIStatusBarStyleLightContent];
+    //[self performSelector:@selector(removeSplash) withObject:nil afterDelay:1500.2];
     return YES;
 }
 							
@@ -68,7 +75,10 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma database managers
+
+#pragma mark -getter 
+
+#pragma mark -database managers
 - (NSManagedObjectContext *) managedObjectContext {
     if (_managedObjectContext != nil) {
         return _managedObjectContext;

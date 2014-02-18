@@ -28,9 +28,18 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    if (_timesArray_reservation.count>0) {
+    if (_timesArray_reservation.count<=0) {
 //        times_reservation_TabelView
+        [times_reservation_TabelView setHidden:YES];
+        [times_return_TabelView setHidden:YES];
+
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"there is no available times" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+
     }
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning
