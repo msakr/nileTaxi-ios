@@ -40,7 +40,19 @@
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:32/255 green:0/255 blue:23/255 alpha:1], UITextAttributeTextColor,nil]
                                                                                             forState:UIControlStateNormal];
+
     
+    
+//    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor colorWithRed:32/255 green:0/255 blue:23/255 alpha:1]];
+//
+    
+    
+
+
+//    self.navigationController.navigationBar.barTintColor = [UIColor blackColor];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+//    self.navigationController.navigationBar.translucent = NO;
     
 //    self.window.backgroundColor = [UIColor colorWithRed:0.78f green:0.13f blue:0.11f alpha:1];
 //    [application setStatusBarStyle:UIStatusBarStyleLightContent];

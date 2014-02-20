@@ -92,6 +92,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
+    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     if (appDelegate.isLogin && indexPath.row==0) {
         ((UILabel*)[cell viewWithTag:100]).text=@"Logout";
 

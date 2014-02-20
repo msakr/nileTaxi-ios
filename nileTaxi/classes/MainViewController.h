@@ -12,7 +12,7 @@
 #import "UIBezierPath+BasicShapes.h"
 #define stationsCode 1
 
-@interface MainViewController : UIViewController<SelectPickerDelegate>
+@interface MainViewController : UIViewController<SelectPickerDelegate,UIGestureRecognizerDelegate>
 {
     
     NSUInteger usedTicketsNumber;
@@ -29,6 +29,9 @@
     NSDictionary *selectedStationObject;
     NSUInteger *selectedStationindex;
 
+    __weak IBOutlet UIImageView *bookimagev;
+    __weak IBOutlet UIImageView *mapsImagev;
+    __weak IBOutlet UIImageView *scanImagev;
 }
 - (IBAction)goNextStation:(id)sender;
 - (IBAction)goPreviousStation:(id)sender;

@@ -54,7 +54,12 @@
 //    readerView.
     readerView.tracksSymbols = YES;
     
-//    readerView.frame = CGRectMake(30,70,230,230);
+    readerView.frame = CGRectMake(30,70,320,400);
+    [self.view sendSubviewToBack:readerView.superview];
+    
+//    [self.view bringSubviewToFront:rrnTextFiled];
+    
+    
     readerView.torchMode = 0;
 //    readerView.device = [self frontFacingCameraIfAvailable];
     
@@ -69,7 +74,7 @@
     [readerView start];
     readerView.captureReader.enableReader=YES;
     
-    [self.view addSubview: readerView];
+//    [self.view addSubview: readerView];
 //    resultText.hidden=NO;
 
     

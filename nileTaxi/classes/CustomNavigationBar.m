@@ -15,11 +15,24 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
     }
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+        self.tintColor = [UIColor colorWithRed:32/255 green:0/255 blue:23/255 alpha:1];
 
+    }
+    return self;
+    
+    
+
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

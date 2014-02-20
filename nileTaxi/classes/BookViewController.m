@@ -55,6 +55,14 @@
     selectedDateTripRound=[NSDate date];
     [self performSelectorInBackground:@selector(loadAllStationsAndTimesAndDirectoins) withObject:Nil];
     
+    
+    
+    ((UILabel*)[[self.view viewWithTag:1001] viewWithTag:10]).text=    [_stationFrom objectForKey:@"station_name"];
+
+    ((UILabel*)[[self.view viewWithTag:1001] viewWithTag:20]).text=    [_stationTo objectForKey:@"station_name"];
+
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -335,7 +343,8 @@
         [allD setObject:[NSNumber numberWithBool:roundTripSwitch.isOn] forKey:booking_isRound];
         
         ((SelectTimeViewController *)segue.destinationViewController).allData=allD;
-        
+        ((SelectTimeViewController *)segue.destinationViewController).isForStations=NO;
+
 
         if (roundTripSwitch.isOn) {
             ((SelectTimeViewController *)segue.destinationViewController).timesArray_return=[[NSArray alloc]initWithArray:[timesDic objectForKey:@"return_time"]];

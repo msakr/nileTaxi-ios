@@ -61,9 +61,19 @@
         
 
     allTExt=[NSString stringWithFormat:@"From :%@ \nTo :%@ \nDate :%@ \nTime :%@ \nReturn Date :%@ \nReturnTime :%@ \nPrice :%@ \n\nMobile:%@ \nName :%@ \nE-mail :%@ \nPassengers :%@ \n",
-                       [[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"],[[_alldata objectForKey:booking_stationTo]objectForKey:@"station_name"],ReservtionDate,[[_alldata objectForKey:booking_reservationTime]objectForKey:@"time"],
-                       returnDateDate,[[_alldata objectForKey:booking_returnTime]objectForKey:@"time"],[_alldata objectForKey:booking_price],
-                       [_alldata objectForKey:booking_mobileNumber],[_alldata objectForKey:booking_name],[_alldata objectForKey:booking_email],[_alldata objectForKey:booking_numberOfTickets]
+             
+                        
+                        REMOVENULL([[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"]),
+            REMOVENULL( [[_alldata objectForKey:booking_stationTo]objectForKey:@"station_name"]),
+             REMOVENULL(ReservtionDate),
+             REMOVENULL([[_alldata objectForKey:booking_reservationTime]objectForKey:@"time"]),
+                    REMOVENULL(   returnDateDate),
+             REMOVENULL([[_alldata objectForKey:booking_returnTime]objectForKey:@"time"]),
+            [_alldata objectForKey:booking_price],
+                 REMOVENULL(      [_alldata objectForKey:booking_mobileNumber]),
+           REMOVENULL(  [_alldata objectForKey:booking_name]),
+            REMOVENULL( [_alldata objectForKey:booking_email]),
+            [_alldata objectForKey:booking_numberOfTickets]
                        
                        ];
     }else if(_TripType==trip_type_Oncall){
@@ -76,9 +86,17 @@
         
         
         allTExt=[NSString stringWithFormat:@"From :%@ \nTo :%@ \nDate :%@ \nTime :%@ \nReturn Date :%@ \nReturnTime :%@ \nPrice :%@ \n\nMobile:%@ \nName :%@ \nE-mail :%@ \nPassengers :%@ \n",
-                 [[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"],[[_alldata objectForKey:booking_stationTo]objectForKey:@"station_name"],ReservtionDate,[[_alldata objectForKey:booking_reservationTime]objectForKey:@"time"],
-                 returnDateDate,[[_alldata objectForKey:booking_returnTime]objectForKey:@"time"],[_alldata objectForKey:booking_price],
-                 [_alldata objectForKey:booking_mobileNumber],[_alldata objectForKey:booking_name],[_alldata objectForKey:booking_email],[_alldata objectForKey:booking_numberOfTickets]
+                 REMOVENULL([[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"]),
+                 REMOVENULL([[_alldata objectForKey:booking_stationTo]objectForKey:@"station_name"]),
+                 REMOVENULL(ReservtionDate),
+                 REMOVENULL([[_alldata objectForKey:booking_reservationTime]objectForKey:@"time"]),
+                REMOVENULL( returnDateDate),
+                REMOVENULL( [[_alldata objectForKey:booking_returnTime]objectForKey:@"time"]),
+                [_alldata objectForKey:booking_price],
+                REMOVENULL( [_alldata objectForKey:booking_mobileNumber]),
+                REMOVENULL( [_alldata objectForKey:booking_name]),
+                REMOVENULL( [_alldata objectForKey:booking_email]),
+                 [_alldata objectForKey:booking_numberOfTickets]
                  
                  ];
     }

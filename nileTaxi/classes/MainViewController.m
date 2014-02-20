@@ -57,6 +57,32 @@
     [super viewDidLoad];
     
     
+    
+    
+    UITapGestureRecognizer *tapRecognizerScan = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(scanAction:)];
+    [tapRecognizerScan setNumberOfTouchesRequired:1];
+    [tapRecognizerScan setDelegate:self];
+    
+    
+    UITapGestureRecognizer *tapRecognizerBook = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(bookAction:)];
+    [tapRecognizerBook setNumberOfTouchesRequired:1];
+    [tapRecognizerBook setDelegate:self];
+
+    
+    
+    UITapGestureRecognizer *tapRecognizerMap = [[UITapGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(mapsAction:)];
+    [tapRecognizerMap setNumberOfTouchesRequired:1];
+    [tapRecognizerMap setDelegate:self];
+
+    //Don't forget to set the userInteractionEnabled to YES, by default It's NO.
+
+    
+            [scanImagev addGestureRecognizer:tapRecognizerScan];
+            [mapsImagev addGestureRecognizer:tapRecognizerMap];
+            [bookimagev addGestureRecognizer:tapRecognizerBook];
 //    
 //    if (!((nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate]).isLogin) {
 //        [self performSegueWithIdentifier:@"showLogIn" sender:self];

@@ -7,7 +7,9 @@
 //
 
 #import "MainBookingViewController.h"
-#import "SelectSationsViewController.h"
+#import "SelectTimeViewController.h"
+#import "SWRevealViewController.h"
+
 @interface MainBookingViewController ()
 
 @end
@@ -27,6 +29,15 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [_sidebarButton addTarget:self.revealViewController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    //
+    //    _sidebarButton.target = self.revealViewController;
+    //    _sidebarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,17 +55,21 @@
     
     
     if ([[segue identifier] isEqualToString:@"express"]) {
-        ((SelectSationsViewController*)segue.destinationViewController).ScreenID=1;
-        ((SelectSationsViewController*)segue.destinationViewController).title=@"From";
+//        ((SelectTimeViewController*)segue.destinationViewController).ScreenID=1;
+//        ((SelectTimeViewController*)segue.destinationViewController).title=@"From";
 
         
         
-        ((SelectSationsViewController*)segue.destinationViewController).TripType=trip_type_Express;
+        ((SelectTimeViewController*)segue.destinationViewController).TripType=trip_type_Express;
+        ((SelectTimeViewController*)segue.destinationViewController).isForStations=YES;
+
     }else if ([[segue identifier] isEqualToString:@"onCall"]) {
-        ((SelectSationsViewController*)segue.destinationViewController).ScreenID=1;
-        ((SelectSationsViewController*)segue.destinationViewController).title=@"From";
+//        ((SelectTimeViewController*)segue.destinationViewController).ScreenID=1;
+//        ((SelectTimeViewController*)segue.destinationViewController).title=@"From";
 
-        ((SelectSationsViewController*)segue.destinationViewController).TripType=trip_type_Oncall;
+        ((SelectTimeViewController*)segue.destinationViewController).TripType=trip_type_Oncall;
+        ((SelectTimeViewController*)segue.destinationViewController).isForStations=YES;
+
     }
     
     

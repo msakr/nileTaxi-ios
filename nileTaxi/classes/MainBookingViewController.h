@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MainBookingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *sidebarButton;
 
 @end

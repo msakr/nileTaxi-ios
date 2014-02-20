@@ -44,6 +44,6 @@
 #define trip_type_Trips 3
 
 
-#define REMOVENULL(STR) ((STR==nil|| [STR isEqualToString:@""])?@"A":STR)
+#define REMOVENULL(STR) ((STR==nil|| [STR isEqualToString:@""])?@"  ":STR)
 
 @end

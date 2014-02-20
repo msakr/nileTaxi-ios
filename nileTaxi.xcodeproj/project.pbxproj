@@ -100,6 +100,18 @@
 		3165A5BF18AD106400E56077 /* om.png in Resources */ = {isa = PBXBuildFile; fileRef = 3165A5BE18AD106400E56077 /* om.png */; };
 		31680273188EE5DD0012A596 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31680272188EE5DD0012A596 /* MBProgressHUD.m */; };
 		31680274188EE5DD0012A596 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 31680272188EE5DD0012A596 /* MBProgressHUD.m */; };
+		317A1EA018B5059F00F4D34D /* NileTaxi-LogoNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1E9F18B5059F00F4D34D /* NileTaxi-LogoNew.png */; };
+		317A1EAC18B5073600F4D34D /* 01New.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA218B5073600F4D34D /* 01New.png */; };
+		317A1EAD18B5073600F4D34D /* 02New.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA318B5073600F4D34D /* 02New.png */; };
+		317A1EAE18B5073600F4D34D /* 03New.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA418B5073600F4D34D /* 03New.png */; };
+		317A1EAF18B5073600F4D34D /* 04New.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA518B5073600F4D34D /* 04New.png */; };
+		317A1EB118B5073600F4D34D /* logout-iconNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA718B5073600F4D34D /* logout-iconNew.png */; };
+		317A1EB218B5073600F4D34D /* map-iconNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA818B5073600F4D34D /* map-iconNew.png */; };
+		317A1EB318B5073600F4D34D /* mapsBarNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EA918B5073600F4D34D /* mapsBarNew.png */; };
+		317A1EB418B5073600F4D34D /* sync-iconNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EAA18B5073600F4D34D /* sync-iconNew.png */; };
+		317A1EB518B5073600F4D34D /* scan-iconNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EAB18B5073600F4D34D /* scan-iconNew.png */; };
+		317A1EB718B507F000F4D34D /* book-ticket-iconNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 317A1EB618B507F000F4D34D /* book-ticket-iconNew.png */; };
+		3180163C18B61A2A0060F621 /* e7gezlyLogoWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 3180163B18B61A2A0060F621 /* e7gezlyLogoWhite.png */; };
 		3198025B18AE9BDA006AB0C1 /* bookIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3198025618AE9BDA006AB0C1 /* bookIcon.png */; };
 		3198025C18AE9BDA006AB0C1 /* loginIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3198025718AE9BDA006AB0C1 /* loginIcon.png */; };
 		3198025D18AE9BDA006AB0C1 /* mapIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3198025818AE9BDA006AB0C1 /* mapIcon.png */; };
@@ -186,7 +198,7 @@
 		31CD74A918B3D89C00677FA1 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744318B3D89C00677FA1 /* Thumbs.db */; };
 		31CD74AA18B3D89C00677FA1 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744418B3D89C00677FA1 /* user.png */; };
 		31CD74AB18B3D89C00677FA1 /* 01.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744618B3D89C00677FA1 /* 01.png */; };
-		31CD74AC18B3D89C00677FA1 /* 02.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744718B3D89C00677FA1 /* 02.png */; };
+		31CD74AC18B3D89C00677FA1 /* 02Lock.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744718B3D89C00677FA1 /* 02Lock.png */; };
 		31CD74AD18B3D89C00677FA1 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744818B3D89C00677FA1 /* Thumbs.db */; };
 		31CD74AE18B3D89C00677FA1 /* list_item_map_bg.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744918B3D89C00677FA1 /* list_item_map_bg.9.png */; };
 		31CD74AF18B3D89C00677FA1 /* list_item_map_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD744A18B3D89C00677FA1 /* list_item_map_bg.png */; };
@@ -430,6 +442,18 @@
 		3165A5BE18AD106400E56077 /* om.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = om.png; sourceTree = "<group>"; };
 		31680271188EE5DD0012A596 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		31680272188EE5DD0012A596 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		317A1E9F18B5059F00F4D34D /* NileTaxi-LogoNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NileTaxi-LogoNew.png"; sourceTree = "<group>"; };
+		317A1EA218B5073600F4D34D /* 01New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01New.png; sourceTree = "<group>"; };
+		317A1EA318B5073600F4D34D /* 02New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02New.png; sourceTree = "<group>"; };
+		317A1EA418B5073600F4D34D /* 03New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03New.png; sourceTree = "<group>"; };
+		317A1EA518B5073600F4D34D /* 04New.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 04New.png; sourceTree = "<group>"; };
+		317A1EA718B5073600F4D34D /* logout-iconNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout-iconNew.png"; sourceTree = "<group>"; };
+		317A1EA818B5073600F4D34D /* map-iconNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-iconNew.png"; sourceTree = "<group>"; };
+		317A1EA918B5073600F4D34D /* mapsBarNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapsBarNew.png; sourceTree = "<group>"; };
+		317A1EAA18B5073600F4D34D /* sync-iconNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync-iconNew.png"; sourceTree = "<group>"; };
+		317A1EAB18B5073600F4D34D /* scan-iconNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan-iconNew.png"; sourceTree = "<group>"; };
+		317A1EB618B507F000F4D34D /* book-ticket-iconNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-ticket-iconNew.png"; sourceTree = "<group>"; };
+		3180163B18B61A2A0060F621 /* e7gezlyLogoWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = e7gezlyLogoWhite.png; sourceTree = "<group>"; };
 		3198025618AE9BDA006AB0C1 /* bookIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookIcon.png; sourceTree = "<group>"; };
 		3198025718AE9BDA006AB0C1 /* loginIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginIcon.png; sourceTree = "<group>"; };
 		3198025818AE9BDA006AB0C1 /* mapIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapIcon.png; sourceTree = "<group>"; };
@@ -522,7 +546,7 @@
 		31CD744318B3D89C00677FA1 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		31CD744418B3D89C00677FA1 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		31CD744618B3D89C00677FA1 /* 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.png; sourceTree = "<group>"; };
-		31CD744718B3D89C00677FA1 /* 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.png; sourceTree = "<group>"; };
+		31CD744718B3D89C00677FA1 /* 02Lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02Lock.png; sourceTree = "<group>"; };
 		31CD744818B3D89C00677FA1 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
 		31CD744918B3D89C00677FA1 /* list_item_map_bg.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_item_map_bg.9.png; sourceTree = "<group>"; };
 		31CD744A18B3D89C00677FA1 /* list_item_map_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_item_map_bg.png; sourceTree = "<group>"; };
@@ -846,10 +870,13 @@
 		3126A10218A65FDD004B6364 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				3180163B18B61A2A0060F621 /* e7gezlyLogoWhite.png */,
+				317A1EA118B506F700F4D34D /* New Group */,
 				31CD742718B3D89C00677FA1 /* GFX */,
 				31B2FC8918ACE4C700CBC4DB /* 1136 */,
 				31B2FC7418ACE4B000CBC4DB /* 480 */,
 				31B2FC7018ACD91B00CBC4DB /* progressbar_empty.jpg */,
+				317A1E9F18B5059F00F4D34D /* NileTaxi-LogoNew.png */,
 				3198025618AE9BDA006AB0C1 /* bookIcon.png */,
 				31E9A8B218B3F96A0098BA5D /* scanTicketButtonArrow.png */,
 				3198025718AE9BDA006AB0C1 /* loginIcon.png */,
@@ -1141,6 +1168,23 @@
 			name = progress;
 			sourceTree = "<group>";
 		};
+		317A1EA118B506F700F4D34D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				317A1EB618B507F000F4D34D /* book-ticket-iconNew.png */,
+				317A1EA218B5073600F4D34D /* 01New.png */,
+				317A1EA318B5073600F4D34D /* 02New.png */,
+				317A1EA418B5073600F4D34D /* 03New.png */,
+				317A1EA518B5073600F4D34D /* 04New.png */,
+				317A1EA718B5073600F4D34D /* logout-iconNew.png */,
+				317A1EA818B5073600F4D34D /* map-iconNew.png */,
+				317A1EA918B5073600F4D34D /* mapsBarNew.png */,
+				317A1EAA18B5073600F4D34D /* sync-iconNew.png */,
+				317A1EAB18B5073600F4D34D /* scan-iconNew.png */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		319D42691895624E00EE9CBF /* alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -1346,7 +1390,7 @@
 			isa = PBXGroup;
 			children = (
 				31CD744618B3D89C00677FA1 /* 01.png */,
-				31CD744718B3D89C00677FA1 /* 02.png */,
+				31CD744718B3D89C00677FA1 /* 02Lock.png */,
 				31CD744818B3D89C00677FA1 /* Thumbs.db */,
 			);
 			path = "input fields-icons";
@@ -1526,10 +1570,13 @@
 				31CD74DC18B3D89C00677FA1 /* Thumbs.db in Resources */,
 				31CD74BB18B3D89C00677FA1 /* 06.png in Resources */,
 				31CD74ED18B3D89C00677FA1 /* welcome_item_bg.png in Resources */,
+				317A1EB218B5073600F4D34D /* map-iconNew.png in Resources */,
 				31CD74A118B3D89C00677FA1 /* button_pressed.9.png in Resources */,
+				317A1EAD18B5073600F4D34D /* 02New.png in Resources */,
 				31CD74E918B3D89C00677FA1 /* spinner_bg_s.png in Resources */,
 				31A250BE18A97BE300334FA1 /* lolo_16.png in Resources */,
 				31B2FC9D18ACE4C700CBC4DB /* refresh@2x.png in Resources */,
+				317A1EAF18B5073600F4D34D /* 04New.png in Resources */,
 				31CD749318B3D89C00677FA1 /* book_b.png in Resources */,
 				31CD74CF18B3D89C00677FA1 /* scan_b.png in Resources */,
 				31CD749218B3D89C00677FA1 /* book.png in Resources */,
@@ -1544,6 +1591,7 @@
 				31B2FC9A18ACE4C700CBC4DB /* line@2x.png in Resources */,
 				31CD74D918B3D89C00677FA1 /* sync_b.png in Resources */,
 				3133E1331882E82C0090B508 /* Tsonoqua Mask.gif in Resources */,
+				317A1EB118B5073600F4D34D /* logout-iconNew.png in Resources */,
 				31CD74EA18B3D89C00677FA1 /* sync.png in Resources */,
 				31B96C0518ABE97100F7DF4D /* booking_trips.png in Resources */,
 				31CD74A318B3D89C00677FA1 /* drawer.png in Resources */,
@@ -1561,10 +1609,12 @@
 				31CD74EB18B3D89C00677FA1 /* Thumbs.db in Resources */,
 				31A250C218A97BE300334FA1 /* ui_03.png in Resources */,
 				31CD74C918B3D89C00677FA1 /* progress_empty.png in Resources */,
+				317A1EA018B5059F00F4D34D /* NileTaxi-LogoNew.png in Resources */,
 				31B2FC9C18ACE4C700CBC4DB /* poweredby@2x.png in Resources */,
 				31CD74E718B3D89C00677FA1 /* scan.jpg in Resources */,
 				31CD74B218B3D89C00677FA1 /* main-icon-Recovered.png in Resources */,
 				3165A5B818AD099D00E56077 /* zbar-back.png in Resources */,
+				317A1EAE18B5073600F4D34D /* 03New.png in Resources */,
 				31B96C0218ABE97100F7DF4D /* booking_oncall.png in Resources */,
 				31CD74E418B3D89C00677FA1 /* name_arrow.png in Resources */,
 				31CD74C418B3D89C00677FA1 /* pattern.png in Resources */,
@@ -1584,6 +1634,7 @@
 				31CD74B018B3D89C00677FA1 /* logo.png in Resources */,
 				3165A5BD18AD103100E56077 /* om@2x.png in Resources */,
 				31CD74DF18B3D89C00677FA1 /* ab_bg.jpg in Resources */,
+				317A1EAC18B5073600F4D34D /* 01New.png in Resources */,
 				31CD74B818B3D89C00677FA1 /* 03.png in Resources */,
 				31CD74A818B3D89C00677FA1 /* ic_valid.png in Resources */,
 				31A250C118A97BE300334FA1 /* ui_03-.png in Resources */,
@@ -1594,6 +1645,7 @@
 				31A250C518A97BE300334FA1 /* ui_14.png in Resources */,
 				31CD749D18B3D89C00677FA1 /* trips_normal.jpg in Resources */,
 				31CD74E318B3D89C00677FA1 /* map.jpg in Resources */,
+				317A1EB518B5073600F4D34D /* scan-iconNew.png in Resources */,
 				31A250BF18A97BE300334FA1 /* lolo_18.png in Resources */,
 				31CD74A518B3D89C00677FA1 /* eye.png in Resources */,
 				31A250C318A97BE300334FA1 /* ui_06.png in Resources */,
@@ -1602,6 +1654,7 @@
 				3126A11218A66007004B6364 /* map.png in Resources */,
 				313FBCF618AEB705002F287A /* boat_gray@2x.png in Resources */,
 				31CD749C18B3D89C00677FA1 /* progressbar_full.jpg in Resources */,
+				317A1EB318B5073600F4D34D /* mapsBarNew.png in Resources */,
 				31CD74D718B3D89C00677FA1 /* spinner_bg_s.9.png in Resources */,
 				31CD74CA18B3D89C00677FA1 /* progress_full.png in Resources */,
 				31CD74E018B3D89C00677FA1 /* arrow.png in Resources */,
@@ -1652,7 +1705,8 @@
 				31A250C418A97BE300334FA1 /* ui_09.png in Resources */,
 				31A250C718A97BE300334FA1 /* ui_18.png in Resources */,
 				31CD74A718B3D89C00677FA1 /* ic_launcher.png in Resources */,
-				31CD74AC18B3D89C00677FA1 /* 02.png in Resources */,
+				31CD74AC18B3D89C00677FA1 /* 02Lock.png in Resources */,
+				3180163C18B61A2A0060F621 /* e7gezlyLogoWhite.png in Resources */,
 				312A899018857BB5003563C7 /* CustomPicker.xib in Resources */,
 				31CD74AB18B3D89C00677FA1 /* 01.png in Resources */,
 				3165A5BB18AD099D00E56077 /* zbar-samples.png in Resources */,
@@ -1667,6 +1721,7 @@
 				31E9A8B718B3FDCA0098BA5D /* previous.png in Resources */,
 				31CD74D218B3D89C00677FA1 /* spinner_bg.9.png in Resources */,
 				31CD749E18B3D89C00677FA1 /* trips_pressed.jpg in Resources */,
+				317A1EB718B507F000F4D34D /* book-ticket-iconNew.png in Resources */,
 				31CD74BA18B3D89C00677FA1 /* 05.png in Resources */,
 				31CD74C818B3D89C00677FA1 /* powered_by.png in Resources */,
 				3120D926187EC43800F12389 /* Main.storyboard in Resources */,
@@ -1677,6 +1732,7 @@
 				31B2FC9718ACE4C700CBC4DB /* boat_blue@2x.png in Resources */,
 				31CD749418B3D89C00677FA1 /* book_w.png in Resources */,
 				31CD74CE18B3D89C00677FA1 /* scan.png in Resources */,
+				317A1EB418B5073600F4D34D /* sync-iconNew.png in Resources */,
 				31CD74D618B3D89C00677FA1 /* sign_w.png in Resources */,
 				31E9A8B618B3FDCA0098BA5D /* next.png in Resources */,
 				31CD749818B3D89C00677FA1 /* NileTaxi-iphone.jpg in Resources */,

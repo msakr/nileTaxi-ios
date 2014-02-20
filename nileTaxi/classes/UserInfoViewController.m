@@ -194,7 +194,7 @@
     
     switch (code) {
         case TicketsGo:
-            [goTicketNumberButton setTitle:[NSString stringWithFormat:@"%@",(NSNumber*)selectedItem]   forState:UIControlStateNormal];
+            [goTicketNumberButton setTitle:[NSString stringWithFormat:@"%@ Tickets",(NSNumber*)selectedItem]   forState:UIControlStateNormal];
             selectedNumberOfTickets=(NSNumber*)selectedItem;
             break;
             

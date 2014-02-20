@@ -33,6 +33,33 @@
     
     [self.navigationController.navigationBar setHidden:YES];
     [self.navigationItem setHidesBackButton:YES animated:YES];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    
+   
+}
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    //Assign new frame to your view
+    
+    CGRect ff=self.view.frame;
+    ff.origin.y-=40;
+    
+    [self.view setFrame:ff];
+    
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    
+    CGRect ff=self.view.frame;
+    ff.origin.y+=40;
+    [self.view setFrame:ff];
 }
 - (void)viewDidLoad
 {
