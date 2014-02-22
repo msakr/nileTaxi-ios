@@ -114,7 +114,7 @@
     NSLog(@"%@ aasasasas",sym.data);
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-        [self performSelector:@selector(recieveRRn:) withObject:sym.data afterDelay:10];
+        [self performSelector:@selector(recieveRRn:) withObject:sym.data ];
 //        [readerView stop];
             readerView.captureReader.enableReader=NO;
         break;
@@ -129,10 +129,10 @@
     
 
     
-    UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error aaaaa" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: self];
-//    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    
-    [alertNO show];
+//    UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error aaaaa" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: self];
+////    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//    
+//    [alertNO show];
 }
 //- (void) imagePickerController: (UIImagePickerController*) reader
 // didFinishPickingMediaWithInfo: (NSDictionary*) info
@@ -190,10 +190,57 @@
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
         UIAlertView *alertForNotFound=[[UIAlertView alloc]initWithTitle:@"Wrong" message:@"The ticket was NOT found\n do you want to check for it on the service?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", nil];
-        alertForNotFound.tag=alert_ticketNOTfound_tag;
+//        alertForNotFound.tag=alert_ticketNOTfound_tag;
         tempRRN=input_RRn;
 
-        [alertForNotFound show];
+        
+        
+        
+//        [alertForNotFound show];
+        
+        
+        
+        
+        AlertView *av = [[AlertView alloc] initWithTitle:@"Wrong" message:@"The ticket was NOT found\n do you want to check for it on the service?"  cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"YES"]];
+        
+        
+        av.completion = ^(BOOL cancelled, NSInteger buttonIndex) {
+            if (!cancelled) {
+             
+                
+                
+                    //checkOn the service
+//                    NSLog(@"%@",[alertView buttonTitleAtIndex:buttonIndex]);
+                
+                    //            thread = [[NSThread alloc] init];
+                    //            [self performSelector:@selector(checkOntheWebForTicketWithRRn:)
+                    //                           onThread:thread
+                    //                         withObject:tempRRN
+                    //                      waitUntilDone:YES];
+                    [self performSelector:@selector(checkOntheWebForTicketWithRRn:) withObject:tempRRN ];
+                    
+                    //            [thread start];
+                    
+                
+                
+            }else{
+                readerView.captureReader.enableReader=YES;
+                
+            }
+        };
+
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+        
+//        dispatch_sync(dispatch_get_main_queue(), ^{
+            /* Do UI work here */
+            [av show];
+            //    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+//        });
+        
+        
+        
         return;
     }
     
@@ -227,6 +274,10 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView==nil) {
+        NSLog(@"aaaaffffffff");
+        return;
+    }
     
     if (alertView.tag==alert_ticketNOTfound_tag) {
         if (buttonIndex==1) {
@@ -234,7 +285,16 @@
 
             //checkOn the service
             NSLog(@"%@",[alertView buttonTitleAtIndex:buttonIndex]);
-            [self performSelectorInBackground:@selector(checkOntheWebForTicketWithRRn:) withObject:tempRRN ];
+            
+//            thread = [[NSThread alloc] init];
+//            [self performSelector:@selector(checkOntheWebForTicketWithRRn:)
+//                           onThread:thread
+//                         withObject:tempRRN
+//                      waitUntilDone:YES];
+            [self performSelector:@selector(checkOntheWebForTicketWithRRn:) withObject:tempRRN ];
+            
+//            [thread start];
+            
         }else{
             readerView.captureReader.enableReader=YES;
             
@@ -304,7 +364,12 @@ readerView.captureReader.enableReader=YES;
 }
 
 
-
+-(void)viewWillDisappear:(BOOL)animated{
+    NSLog(@"cancel");
+//    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkOntheWebForTicketWithRRn:) object:nil];
+    
+//    [thread cancel];
+}
 #pragma mark -service play on ticket rrn check
 
 
@@ -328,7 +393,7 @@ readerView.captureReader.enableReader=YES;
     
     
     if (tempArray==nil && tempError!=nil) {
-        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:tempError.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:tempError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
         [alertNO show];
@@ -352,7 +417,7 @@ readerView.captureReader.enableReader=YES;
     NSString *Recieved_toStation=[tempArray objectForKey:@"to_name"];
     NSString *Recieved_nane=[tempArray objectForKey:@"name"];
     
-    UIAlertView *useTicketAlert=[[UIAlertView alloc]initWithTitle:@"Found" message:[NSString stringWithFormat:@"The Ticket Was Found\nname: %@\nFrom: %@\nTo: %@\nRRN: %@\nDo you want to use it?",Recieved_nane,Recieved_fromStation,Recieved_toStation,Recieved_RRn] delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+        UIAlertView *useTicketAlert=[[UIAlertView alloc]initWithTitle:@"Found" message:[NSString stringWithFormat:@"The Ticket Was Found\nname: %@\nFrom: %@\nTo: %@\nRRN: %@\nDo you want to use it?",Recieved_nane,Recieved_fromStation,Recieved_toStation,Recieved_RRn] delegate:(self==nil?nil:self) cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
     useTicketAlert.tag=alert_ticketUSE_tag;
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 

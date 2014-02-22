@@ -127,6 +127,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	MBProgressHUD *hud = [[self alloc] initWithView:view];
 	[view addSubview:hud];
 	[hud show:animated];
+    
+//    view.superview.userInteractionEnabled=NO;
 	return MB_AUTORELEASE(hud);
 }
 
@@ -141,7 +143,11 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 }
 
 + (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated {
-	NSArray *huds = [MBProgressHUD allHUDsForView:view];
+
+	
+//    view.superview.userInteractionEnabled=YES;
+
+    NSArray *huds = [MBProgressHUD allHUDsForView:view];
 	for (MBProgressHUD *hud in huds) {
 		hud.removeFromSuperViewOnHide = YES;
 		[hud hide:animated];

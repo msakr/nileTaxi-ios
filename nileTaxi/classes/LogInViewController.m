@@ -216,6 +216,14 @@
 {
     
     [textField resignFirstResponder];
+    
+    
+    if (textField==userNameTxtField) {
+        [passwordTxtField becomeFirstResponder];
+    }else{
+    
+    [self logInAction:Nil];
+    }
     return NO;
 }
 

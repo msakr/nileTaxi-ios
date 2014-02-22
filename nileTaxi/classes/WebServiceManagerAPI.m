@@ -602,12 +602,12 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
     [[av textFieldAtIndex:1] setPlaceholder:@"Password"];
    
     
-//    dispatch_sync(dispatch_get_main_queue(), ^{
+    dispatch_sync(dispatch_get_main_queue(), ^{
         /* Do UI work here */
         [av show];
 //    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
-//    });
+    });
 
 }
 

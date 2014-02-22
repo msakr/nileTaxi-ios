@@ -145,15 +145,7 @@
     }
     
     
-    if ([Helpers getToken]!=nil) {
-
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self performSelectorOnMainThread:@selector(loadAllStationsAndTimesAndDirectoins) withObject:nil waitUntilDone:NO];
-        
-        
-        
-    }
-
+    
     
     
     
@@ -248,6 +240,16 @@
 -(void)viewWillAppear:(BOOL)animated{
     
     [self.navigationController.navigationBar setHidden:NO];
+
+    
+    if ([Helpers getToken]!=nil) {
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self performSelectorInBackground:@selector(loadAllStationsAndTimesAndDirectoins) withObject:nil ];
+        
+        
+        
+    }
 
     if ([Helpers getToken]==nil) {
         [self performSegueWithIdentifier:@"showLogIn" sender:self];
