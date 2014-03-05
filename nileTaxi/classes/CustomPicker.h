@@ -23,7 +23,11 @@
     UIPickerView *itemsPicker;
     UIDatePicker *datePicker;
     
+    __weak IBOutlet UIBarButtonItem *titleeB;
 }
+
+@property(nonatomic)NSString *titlee;
+
 @property(nonatomic)int componentCode;
 @property(nonatomic) int pickerType;
 

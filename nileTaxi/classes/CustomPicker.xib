@@ -11,11 +11,19 @@
             <rect key="frame" x="0.0" y="0.0" width="324" height="216"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1iC-pX-lcS">
+                    <rect key="frame" x="141" y="98" width="42" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="odk-ok-4zW">
                     <rect key="frame" x="0.0" y="0.0" width="324" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <items>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="wVu-ws-tuY"/>
+                        <barButtonItem style="plain" id="wVu-ws-tuY"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="ugk-NF-SOd"/>
                         <barButtonItem title="Done" id="4qO-gW-f17">
                             <color key="tintColor" red="0.97647058819999999" green="0.91764705879999997" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -35,6 +43,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="pivkerContainer" destination="ECu-UH-OaK" id="d5x-TK-uEw"/>
+                <outlet property="titleeB" destination="wVu-ws-tuY" id="fGw-qe-bPr"/>
             </connections>
         </view>
     </objects>

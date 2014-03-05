@@ -169,6 +169,8 @@
     [self enableOrDisablAll:NO];
 
     customPickerView.itemsArray=stationsArray;
+    customPickerView.titlee=@"Choose Station :";
+
     customPickerView.pickerType=type_itemsPicker;
     customPickerView.componentCode=stationsCode;
 
@@ -268,7 +270,7 @@
 
 
     for (NSDictionary *dicTicket in newTickets) {
-        bool isAdded=[DBManager addTicketToDBWithT_email:[dicTicket objectForKey:@"email"] andT_from_name:[dicTicket objectForKey:@"from_name"] andt_idd:[dicTicket objectForKey:@"id"] andt_isUsed:[dicTicket objectForKey:@""] andt_mobile:[dicTicket objectForKey:@"mobile"] andt_name:[dicTicket objectForKey:@"name"] andt_num_tickets:[dicTicket objectForKey:@"number_of_tickets"] andt_rrn:[dicTicket objectForKey:@"rrn"] andt_ticket_type:[dicTicket objectForKey:@"ticket_type"] andt_to_name:[dicTicket objectForKey:@"to_name"] andt_trans_date:[dicTicket objectForKey:@"trans_date"] andt_trans_time:[dicTicket objectForKey:@"trans_time"] withNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDB];
+        bool isAdded=[DBManager addTicketToDBWithT_email:[dicTicket objectForKey:@"email"] andT_from_name:[dicTicket objectForKey:@"from_station"] andt_idd:[dicTicket objectForKey:@"id"] andt_isUsed:[dicTicket objectForKey:@""] andt_mobile:[dicTicket objectForKey:@"mobile"] andt_name:[dicTicket objectForKey:@"name"] andt_num_tickets:[dicTicket objectForKey:@"number_of_tickets"] andt_rrn:[dicTicket objectForKey:@"rrn"] andt_ticket_type:[dicTicket objectForKey:@"ticket_type"] andt_to_name:[dicTicket objectForKey:@"to_station"] andt_trans_date:[dicTicket objectForKey:@"trans_date"] andt_trans_time:[dicTicket objectForKey:@"trans_time"] withNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDB];
         
         if (!isAdded && errorDB!=nil) {
             UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];

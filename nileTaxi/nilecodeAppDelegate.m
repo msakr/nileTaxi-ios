@@ -38,6 +38,8 @@
         _isLogin=NO;
     }
     
+    
+    _firstTime=YES;
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:32/255 green:0/255 blue:23/255 alpha:1], UITextAttributeTextColor,nil]
                                                                                             forState:UIControlStateNormal];
 

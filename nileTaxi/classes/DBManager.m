@@ -69,7 +69,7 @@
                 inManagedObjectContext:context];
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     [request setEntity:entityDesc];
-    NSPredicate *pred =[NSPredicate predicateWithFormat:@"(isUsed = %i)", 1];
+    NSPredicate *pred =[NSPredicate predicateWithFormat:@"(isUsed = %@)", @1];
    [request setPredicate:pred];
     //    NSManagedObject *matches = nil;
     NSArray *objects = [context executeFetchRequest:request
@@ -80,8 +80,9 @@
         for (Ticket *tempObj in objects) {
             
 
-            [resultsArr addObject:tempObj.idd];
+            [resultsArr addObject:tempObj.rrn];
 
+            NSLog(@"aaa %@",tempObj.isUsed);
         }
     }
     

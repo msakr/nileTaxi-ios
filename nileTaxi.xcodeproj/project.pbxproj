@@ -139,8 +139,8 @@
 		31A250F018AA5AC900334FA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A250EF18AA5AC900334FA1 /* QuartzCore.framework */; };
 		31A250F218AA5AE000334FA1 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A250F118AA5AE000334FA1 /* libiconv.dylib */; };
 		31A2511718AA5FE400334FA1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31A2511618AA5FE400334FA1 /* AVFoundation.framework */; };
-		31B2FC7218ACD91B00CBC4DB /* progressbar_empty.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7018ACD91B00CBC4DB /* progressbar_empty.jpg */; };
-		31B2FC7318ACD91B00CBC4DB /* progressbar_full.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7118ACD91B00CBC4DB /* progressbar_full.jpg */; };
+		31B2FC7218ACD91B00CBC4DB /* progressbar_empty@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7018ACD91B00CBC4DB /* progressbar_empty@2x.jpg */; };
+		31B2FC7318ACD91B00CBC4DB /* progressbar_full@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7118ACD91B00CBC4DB /* progressbar_full@2x.jpg */; };
 		31B2FC7F18ACE4B000CBC4DB /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7518ACE4B000CBC4DB /* bar.png */; };
 		31B2FC8118ACE4B000CBC4DB /* bookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7718ACE4B000CBC4DB /* bookButton.png */; };
 		31B2FC8218ACE4B000CBC4DB /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC7818ACE4B000CBC4DB /* line.png */; };
@@ -160,6 +160,8 @@
 		31B2FC9F18ACE4C700CBC4DB /* scanTicketButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC9318ACE4C700CBC4DB /* scanTicketButton@2x.png */; };
 		31B2FCA018ACE4C700CBC4DB /* statiosMap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC9418ACE4C700CBC4DB /* statiosMap@2x.png */; };
 		31B2FCA118ACE4C700CBC4DB /* unsacannedTickets@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B2FC9518ACE4C700CBC4DB /* unsacannedTickets@2x.png */; };
+		31B3A27518BCDB3500E0275A /* mapsBarNew-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B3A27318BCDB3500E0275A /* mapsBarNew-2.png */; };
+		31B3A27618BCDB3500E0275A /* scanTicketButtonArrow-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B3A27418BCDB3500E0275A /* scanTicketButtonArrow-2.png */; };
 		31B96BF918ABE92700F7DF4D /* booking_express.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B96BF618ABE92700F7DF4D /* booking_express.png */; };
 		31B96BFA18ABE92700F7DF4D /* booking_express@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B96BF718ABE92700F7DF4D /* booking_express@2x.png */; };
 		31B96BFB18ABE92700F7DF4D /* booking_express-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 31B96BF818ABE92700F7DF4D /* booking_express-568h@2x.png */; };
@@ -254,7 +256,7 @@
 		31CD74E418B3D89C00677FA1 /* name_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748518B3D89C00677FA1 /* name_arrow.png */; };
 		31CD74E518B3D89C00677FA1 /* NileTaxi-app.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748618B3D89C00677FA1 /* NileTaxi-app.jpg */; };
 		31CD74E618B3D89C00677FA1 /* NileTaxi-new-design---Copy-Recovered---Copy_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748718B3D89C00677FA1 /* NileTaxi-new-design---Copy-Recovered---Copy_03.jpg */; };
-		31CD74E718B3D89C00677FA1 /* scan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748818B3D89C00677FA1 /* scan.jpg */; };
+		31CD74E718B3D89C00677FA1 /* scan@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748818B3D89C00677FA1 /* scan@2x.jpg */; };
 		31CD74E818B3D89C00677FA1 /* spinner_bg_s.9.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748918B3D89C00677FA1 /* spinner_bg_s.9.png */; };
 		31CD74E918B3D89C00677FA1 /* spinner_bg_s.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748A18B3D89C00677FA1 /* spinner_bg_s.png */; };
 		31CD74EA18B3D89C00677FA1 /* sync.png in Resources */ = {isa = PBXBuildFile; fileRef = 31CD748B18B3D89C00677FA1 /* sync.png */; };
@@ -487,8 +489,8 @@
 		31A250EF18AA5AC900334FA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		31A250F118AA5AE000334FA1 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		31A2511618AA5FE400334FA1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		31B2FC7018ACD91B00CBC4DB /* progressbar_empty.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = progressbar_empty.jpg; sourceTree = "<group>"; };
-		31B2FC7118ACD91B00CBC4DB /* progressbar_full.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = progressbar_full.jpg; sourceTree = "<group>"; };
+		31B2FC7018ACD91B00CBC4DB /* progressbar_empty@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "progressbar_empty@2x.jpg"; sourceTree = "<group>"; };
+		31B2FC7118ACD91B00CBC4DB /* progressbar_full@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "progressbar_full@2x.jpg"; sourceTree = "<group>"; };
 		31B2FC7518ACE4B000CBC4DB /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
 		31B2FC7718ACE4B000CBC4DB /* bookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bookButton.png; sourceTree = "<group>"; };
 		31B2FC7818ACE4B000CBC4DB /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
@@ -508,6 +510,8 @@
 		31B2FC9318ACE4C700CBC4DB /* scanTicketButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanTicketButton@2x.png"; sourceTree = "<group>"; };
 		31B2FC9418ACE4C700CBC4DB /* statiosMap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "statiosMap@2x.png"; sourceTree = "<group>"; };
 		31B2FC9518ACE4C700CBC4DB /* unsacannedTickets@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unsacannedTickets@2x.png"; sourceTree = "<group>"; };
+		31B3A27318BCDB3500E0275A /* mapsBarNew-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mapsBarNew-2.png"; sourceTree = "<group>"; };
+		31B3A27418BCDB3500E0275A /* scanTicketButtonArrow-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanTicketButtonArrow-2.png"; sourceTree = "<group>"; };
 		31B96BF618ABE92700F7DF4D /* booking_express.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = booking_express.png; sourceTree = "<group>"; };
 		31B96BF718ABE92700F7DF4D /* booking_express@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "booking_express@2x.png"; sourceTree = "<group>"; };
 		31B96BF818ABE92700F7DF4D /* booking_express-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "booking_express-568h@2x.png"; sourceTree = "<group>"; };
@@ -602,7 +606,7 @@
 		31CD748518B3D89C00677FA1 /* name_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = name_arrow.png; sourceTree = "<group>"; };
 		31CD748618B3D89C00677FA1 /* NileTaxi-app.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "NileTaxi-app.jpg"; sourceTree = "<group>"; };
 		31CD748718B3D89C00677FA1 /* NileTaxi-new-design---Copy-Recovered---Copy_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "NileTaxi-new-design---Copy-Recovered---Copy_03.jpg"; sourceTree = "<group>"; };
-		31CD748818B3D89C00677FA1 /* scan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scan.jpg; sourceTree = "<group>"; };
+		31CD748818B3D89C00677FA1 /* scan@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "scan@2x.jpg"; sourceTree = "<group>"; };
 		31CD748918B3D89C00677FA1 /* spinner_bg_s.9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinner_bg_s.9.png; sourceTree = "<group>"; };
 		31CD748A18B3D89C00677FA1 /* spinner_bg_s.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spinner_bg_s.png; sourceTree = "<group>"; };
 		31CD748B18B3D89C00677FA1 /* sync.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sync.png; sourceTree = "<group>"; };
@@ -870,12 +874,14 @@
 		3126A10218A65FDD004B6364 /* imgs */ = {
 			isa = PBXGroup;
 			children = (
+				31B3A27318BCDB3500E0275A /* mapsBarNew-2.png */,
+				31B3A27418BCDB3500E0275A /* scanTicketButtonArrow-2.png */,
 				3180163B18B61A2A0060F621 /* e7gezlyLogoWhite.png */,
 				317A1EA118B506F700F4D34D /* New Group */,
 				31CD742718B3D89C00677FA1 /* GFX */,
 				31B2FC8918ACE4C700CBC4DB /* 1136 */,
 				31B2FC7418ACE4B000CBC4DB /* 480 */,
-				31B2FC7018ACD91B00CBC4DB /* progressbar_empty.jpg */,
+				31B2FC7018ACD91B00CBC4DB /* progressbar_empty@2x.jpg */,
 				317A1E9F18B5059F00F4D34D /* NileTaxi-LogoNew.png */,
 				3198025618AE9BDA006AB0C1 /* bookIcon.png */,
 				31E9A8B218B3F96A0098BA5D /* scanTicketButtonArrow.png */,
@@ -886,7 +892,7 @@
 				31E9A8B418B3FDCA0098BA5D /* next.png */,
 				31E9A8B518B3FDCA0098BA5D /* previous.png */,
 				3198025A18AE9BDA006AB0C1 /* syncIcon.png */,
-				31B2FC7118ACD91B00CBC4DB /* progressbar_full.jpg */,
+				31B2FC7118ACD91B00CBC4DB /* progressbar_full@2x.jpg */,
 				31B96BEF18ABE2B600F7DF4D /* booking */,
 				31A250B118A97BD000334FA1 /* imgs2 */,
 				3126A12518A67B99004B6364 /* btn.png */,
@@ -1453,7 +1459,7 @@
 				31CD748518B3D89C00677FA1 /* name_arrow.png */,
 				31CD748618B3D89C00677FA1 /* NileTaxi-app.jpg */,
 				31CD748718B3D89C00677FA1 /* NileTaxi-new-design---Copy-Recovered---Copy_03.jpg */,
-				31CD748818B3D89C00677FA1 /* scan.jpg */,
+				31CD748818B3D89C00677FA1 /* scan@2x.jpg */,
 				31CD748918B3D89C00677FA1 /* spinner_bg_s.9.png */,
 				31CD748A18B3D89C00677FA1 /* spinner_bg_s.png */,
 				31CD748B18B3D89C00677FA1 /* sync.png */,
@@ -1591,6 +1597,7 @@
 				31B2FC9A18ACE4C700CBC4DB /* line@2x.png in Resources */,
 				31CD74D918B3D89C00677FA1 /* sync_b.png in Resources */,
 				3133E1331882E82C0090B508 /* Tsonoqua Mask.gif in Resources */,
+				31B3A27618BCDB3500E0275A /* scanTicketButtonArrow-2.png in Resources */,
 				317A1EB118B5073600F4D34D /* logout-iconNew.png in Resources */,
 				31CD74EA18B3D89C00677FA1 /* sync.png in Resources */,
 				31B96C0518ABE97100F7DF4D /* booking_trips.png in Resources */,
@@ -1611,7 +1618,7 @@
 				31CD74C918B3D89C00677FA1 /* progress_empty.png in Resources */,
 				317A1EA018B5059F00F4D34D /* NileTaxi-LogoNew.png in Resources */,
 				31B2FC9C18ACE4C700CBC4DB /* poweredby@2x.png in Resources */,
-				31CD74E718B3D89C00677FA1 /* scan.jpg in Resources */,
+				31CD74E718B3D89C00677FA1 /* scan@2x.jpg in Resources */,
 				31CD74B218B3D89C00677FA1 /* main-icon-Recovered.png in Resources */,
 				3165A5B818AD099D00E56077 /* zbar-back.png in Resources */,
 				317A1EAE18B5073600F4D34D /* 03New.png in Resources */,
@@ -1665,12 +1672,13 @@
 				31CD74DD18B3D89C00677FA1 /* user.png in Resources */,
 				3126A11118A66007004B6364 /* main-bg.jpg in Resources */,
 				31CD74CB18B3D89C00677FA1 /* 01.png in Resources */,
-				31B2FC7318ACD91B00CBC4DB /* progressbar_full.jpg in Resources */,
+				31B2FC7318ACD91B00CBC4DB /* progressbar_full@2x.jpg in Resources */,
 				31CD74C018B3D89C00677FA1 /* prev_normal.png in Resources */,
 				31B2FC7F18ACE4B000CBC4DB /* bar.png in Resources */,
 				31CD74D318B3D89C00677FA1 /* Thumbs.db in Resources */,
 				31CD74E618B3D89C00677FA1 /* NileTaxi-new-design---Copy-Recovered---Copy_03.jpg in Resources */,
 				3165A5B918AD099D00E56077 /* zbar-help.html in Resources */,
+				31B3A27518BCDB3500E0275A /* mapsBarNew-2.png in Resources */,
 				3126A10E18A66007004B6364 /* bar.png in Resources */,
 				31CD74B618B3D89C00677FA1 /* 01.png in Resources */,
 				31CD749618B3D89C00677FA1 /* express_normal.jpg in Resources */,
@@ -1700,7 +1708,7 @@
 				31CD74B918B3D89C00677FA1 /* 04.png in Resources */,
 				31CD74E218B3D89C00677FA1 /* green-map.png in Resources */,
 				31B2FC8218ACE4B000CBC4DB /* line.png in Resources */,
-				31B2FC7218ACD91B00CBC4DB /* progressbar_empty.jpg in Resources */,
+				31B2FC7218ACD91B00CBC4DB /* progressbar_empty@2x.jpg in Resources */,
 				3165A58918ACEE2A00E56077 /* bar_yello.png in Resources */,
 				31A250C418A97BE300334FA1 /* ui_09.png in Resources */,
 				31A250C718A97BE300334FA1 /* ui_18.png in Resources */,

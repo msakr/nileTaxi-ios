@@ -182,6 +182,20 @@
 }
 
 
+#pragma mark -textfield delegate
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if((textField.text.length + string.length - range.length)<=14)
+        return YES;
+    else
+        return NO;
+}
+
+
+-(BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex]; //  return 0;
+    return [emailTest evaluateWithObject:candidate];
+}
 #pragma mark -custom pickerDelegat
 
 
@@ -219,11 +233,21 @@
 - (IBAction)nextAction:(id)sender {
     
 
-    if (mobileTextField.text ==nil || mobileTextField.text.length<5 ) {
+    if (mobileTextField.text ==nil || mobileTextField.text.length<11 ) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"you must insert full mobile number" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
         return;
 
+    }
+    if (emailTextField.text !=nil && emailTextField.text.length>4 ) {
+        
+        if (![self validateEmail:emailTextField.text]) {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Error" message:@"you must insert valid email" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            return;
+
+        }
+        
     }
     
     if (selectedNumberOfTickets.intValue<=0) {
@@ -254,7 +278,8 @@
 
 - (IBAction)selectTicketNumber:(id)sender {
     
-    
+    customPickerView.titlee=@"Choose number of Tickets :";
+
     if (TicketsNumberArrayGO==Nil || TicketsNumberArrayGO.count<=0 ) {
         return;
     }

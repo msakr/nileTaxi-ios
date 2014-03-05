@@ -72,7 +72,7 @@
 //    [self relocateReaderPopover:[self interfaceOrientation]];
     
     [readerView start];
-    readerView.captureReader.enableReader=YES;
+    [self handleShowScannerView];
     
 //    [self.view addSubview: readerView];
 //    resultText.hidden=NO;
@@ -116,7 +116,9 @@
 
         [self performSelector:@selector(recieveRRn:) withObject:sym.data ];
 //        [readerView stop];
-            readerView.captureReader.enableReader=NO;
+            [self handleHideScannerView];
+//        [readerView stop];
+        readerView.hidden=YES;
         break;
 
         
@@ -161,6 +163,17 @@
     [rrnTextFiled resignFirstResponder];
 }
 
+
+-(void)handleShowScannerView{
+readerView.captureReader.enableReader=YES;
+    readerView.hidden=NO;
+    
+}
+
+-(void)handleHideScannerView{
+readerView.captureReader.enableReader=NO;
+        readerView.hidden=YES;
+}
 #pragma mark -handel when recieve RRn from camera or text field
 
 -(void)recieveRRn:(NSString*)input_RRn
@@ -195,7 +208,6 @@
 
         
         
-        
 //        [alertForNotFound show];
         
         
@@ -217,6 +229,8 @@
                     //                           onThread:thread
                     //                         withObject:tempRRN
                     //                      waitUntilDone:YES];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
                     [self performSelector:@selector(checkOntheWebForTicketWithRRn:) withObject:tempRRN ];
                     
                     //            [thread start];
@@ -224,7 +238,9 @@
                 
                 
             }else{
-                readerView.captureReader.enableReader=YES;
+                [self handleShowScannerView];
+                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
                 
             }
         };
@@ -274,6 +290,8 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
     if (alertView==nil) {
         NSLog(@"aaaaffffffff");
         return;
@@ -296,8 +314,9 @@
 //            [thread start];
             
         }else{
-            readerView.captureReader.enableReader=YES;
-            
+            [self handleShowScannerView];
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
         }
 //        return;
     }else     if (alertView.tag==alert_ticketUSE_tag) {
@@ -315,7 +334,8 @@
                 if (errorDB!=nil ) {
                     UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                    
+                    [self handleShowScannerView];
+
                     [alertNO show];
                     
                     
@@ -324,16 +344,24 @@
                 }else {
                     UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Success" message:@"Success Ticket was Used" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
                     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                    
+                    [self handleShowScannerView];
+
+                    inputTicket=nil;
                     [alertNO show];
                 }
 
+                
+                [self handleShowScannerView];
+
+
+            }else{
+                [self handleShowScannerView];
 
             }
             
             
         }else{
-readerView.captureReader.enableReader=YES;
+[self handleShowScannerView];
             
         }
     }else if (alertView.tag==alert_ticketBook_tag) {
@@ -346,13 +374,13 @@ readerView.captureReader.enableReader=YES;
             
 
         }else{
-readerView.captureReader.enableReader=YES;
+[self handleShowScannerView];
 
         }
         
     }else{
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        readerView.captureReader.enableReader=YES;
+        [self handleShowScannerView];
 
 //        [readerView.captureReader enableReader];
 //        [readerView start];
@@ -413,14 +441,85 @@ readerView.captureReader.enableReader=YES;
     }else{
     
     NSString *Recieved_RRn=[tempArray objectForKey:@"rrn"];
-    NSString *Recieved_fromStation=[tempArray objectForKey:@"from_name"];
-    NSString *Recieved_toStation=[tempArray objectForKey:@"to_name"];
+    NSString *Recieved_fromStation=[tempArray objectForKey:@"from_station"];
+    NSString *Recieved_toStation=[tempArray objectForKey:@"to_station"];
     NSString *Recieved_nane=[tempArray objectForKey:@"name"];
-    
+        NSString *Recieved_idd=[tempArray objectForKey:@"id"];
+
+        
+        NSString *Recieved_email=[tempArray objectForKey:@"email"];
+        NSString *Recieved_error_message=[tempArray objectForKey:@"error_message"];
+        NSString *Recieved_mobile=[tempArray objectForKey:@"mobile"];
+        NSString *Recieved_ticket_type=[tempArray objectForKey:@"ticket_type"];
+        
+        NSString *Recieved_number_of_tickets=[tempArray objectForKey:@"number_of_tickets"];
+        NSString *Recieved_trans_date=[tempArray objectForKey:@"trans_date"];
+        NSString *Recieved_trans_time=[tempArray objectForKey:@"trans_time"];
+        NSNumber *Recieved_valid=[tempArray objectForKey:@"valid"];
+        
+        
+        if (!Recieved_valid.boolValue) {
+            
+            
+            UIAlertView *useTicketAlert=[[UIAlertView alloc]initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@",Recieved_error_message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self handleShowScannerView];
+
+            [useTicketAlert show];
+            return;
+
+        }
         UIAlertView *useTicketAlert=[[UIAlertView alloc]initWithTitle:@"Found" message:[NSString stringWithFormat:@"The Ticket Was Found\nname: %@\nFrom: %@\nTo: %@\nRRN: %@\nDo you want to use it?",Recieved_nane,Recieved_fromStation,Recieved_toStation,Recieved_RRn] delegate:(self==nil?nil:self) cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
     useTicketAlert.tag=alert_ticketUSE_tag;
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
+        
+        
+        nilecodeAppDelegate* appDelegate  = [UIApplication sharedApplication].delegate;
+        
+        
+        
+        inputTicket = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Tickets"
+                      inManagedObjectContext:appDelegate.managedObjectContext];
+        
+        inputTicket.email=Recieved_email;
+        inputTicket.from_name=Recieved_fromStation;
+        inputTicket.idd=Recieved_idd;
+        inputTicket.isUsed=[NSNumber numberWithBool:NO];
+        inputTicket.mobile=Recieved_mobile;
+        inputTicket.name=Recieved_nane;
+        inputTicket.num_tickets=Recieved_number_of_tickets;
+        inputTicket.rrn=Recieved_RRn;
+        inputTicket.ticket_type=Recieved_ticket_type;
+        inputTicket.to_name=Recieved_toStation;
+        inputTicket.trans_date=Recieved_trans_date;
+        inputTicket.trans_time=Recieved_trans_time;
+        
+        
+        NSError *errorDB;
+
+        
+        [appDelegate.managedObjectContext save:&errorDB];
+        
+        
+        if ( errorDB!=nil) {
+            UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alertNO show];
+            
+            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            return;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
     [useTicketAlert show];
     }
     

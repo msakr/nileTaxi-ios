@@ -71,7 +71,9 @@
 
 
     [_pivkerContainer addSubview:datePicker];
-
+    if (_titlee!=Nil) {
+        [titleeB setTitle:_titlee];
+    }
 
 
 }
@@ -96,6 +98,9 @@
     [_pivkerContainer addSubview:itemsPicker];
     
     
+    if (_titlee!=Nil) {
+        [titleeB setTitle:_titlee];
+    }
     
 }
 

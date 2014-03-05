@@ -60,6 +60,9 @@
         
         
 
+        if (        ((NSNumber*)[_alldata objectForKey:booking_isRound]).boolValue) {
+            
+        
     allTExt=[NSString stringWithFormat:@"From :%@ \nTo :%@ \nDate :%@ \nTime :%@ \nReturn Date :%@ \nReturnTime :%@ \nPrice :%@ \n\nMobile:%@ \nName :%@ \nE-mail :%@ \nPassengers :%@ \n",
              
                         
@@ -76,6 +79,28 @@
             [_alldata objectForKey:booking_numberOfTickets]
                        
                        ];
+        
+        }else{
+            allTExt=[NSString stringWithFormat:@"From :%@ \nTo :%@ \nDate :%@ \nTime :%@  \nPrice :%@ \n\nMobile:%@ \nName :%@ \nE-mail :%@ \nPassengers :%@ \n",
+                     
+                     
+                     REMOVENULL([[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"]),
+                     REMOVENULL( [[_alldata objectForKey:booking_stationTo]objectForKey:@"station_name"]),
+                     REMOVENULL(ReservtionDate),
+                     REMOVENULL([[_alldata objectForKey:booking_reservationTime]objectForKey:@"time"]),
+
+                     [_alldata objectForKey:booking_price],
+                     REMOVENULL(      [_alldata objectForKey:booking_mobileNumber]),
+                     REMOVENULL(  [_alldata objectForKey:booking_name]),
+                     REMOVENULL( [_alldata objectForKey:booking_email]),
+                     [_alldata objectForKey:booking_numberOfTickets]
+                     
+                     ];
+
+        }
+        
+        
+        
     }else if(_TripType==trip_type_Oncall){
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"dd/MM/yyyy hh:mm a"];
@@ -84,6 +109,9 @@
         NSString *returnDateDate=    [dateFormat stringFromDate:    [NSDate dateWithTimeIntervalSince1970:[[_alldata objectForKey:booking_ReturnDate] doubleValue]]];
         
         
+        
+        if (        ((NSNumber*)[_alldata objectForKey:booking_isRound]).boolValue) {
+
         
         allTExt=[NSString stringWithFormat:@"From :%@ \nTo :%@ \nDate :%@ \nTime :%@ \nReturn Date :%@ \nReturnTime :%@ \nPrice :%@ \n\nMobile:%@ \nName :%@ \nE-mail :%@ \nPassengers :%@ \n",
                  REMOVENULL([[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"]),
@@ -99,6 +127,26 @@
                  [_alldata objectForKey:booking_numberOfTickets]
                  
                  ];
+            
+            
+            
+        }else{
+            allTExt=[NSString stringWithFormat:@"From :%@ \nTo :%@ \nDate :%@ \nTime :%@  \nPrice :%@ \n\nMobile:%@ \nName :%@ \nE-mail :%@ \nPassengers :%@ \n",
+                     REMOVENULL([[_alldata objectForKey:booking_stationFrom]objectForKey:@"station_name"]),
+                     REMOVENULL([[_alldata objectForKey:booking_stationTo]objectForKey:@"station_name"]),
+                     REMOVENULL(ReservtionDate),
+                     REMOVENULL([[_alldata objectForKey:booking_reservationTime]objectForKey:@"time"]),
+                     
+                     [_alldata objectForKey:booking_price],
+                     REMOVENULL( [_alldata objectForKey:booking_mobileNumber]),
+                     REMOVENULL( [_alldata objectForKey:booking_name]),
+                     REMOVENULL( [_alldata objectForKey:booking_email]),
+                     [_alldata objectForKey:booking_numberOfTickets]
+                     
+                     ];
+        }
+        
+            
     }
     
     [dataReviewLabel setText:allTExt];

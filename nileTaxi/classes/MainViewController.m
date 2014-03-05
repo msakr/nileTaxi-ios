@@ -160,6 +160,10 @@
     UIImage *image = [UIImage imageNamed:@"progressbar_full.jpg"];
     
 
+    if (percent==1) {
+    percent=0.99999;
+    }
+
     
 //    bottomImage=[self imageByCropping:bottomImage toRect:CGRectMake(0, 0, bottomImage.size.width, bottomImage.size.height)];
 //    
@@ -379,8 +383,18 @@
         
         [Helpers addStationS:stationsArray];
         
-        [self refreshAction:Nil];
+        nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
         
+        
+
+        if (appDelegate.firstTime) {
+            [self refreshAction:Nil];
+            appDelegate.firstTime=NO;
+
+        }else {
+        
+        [self processProgressBar:appDelegate];
+        }
         
         
     }else{
@@ -466,6 +480,7 @@
     [self enableOrDisablAll:NO];
     
     customPickerView.itemsArray=stationsArray;
+    customPickerView.titlee=@"Choose Station :";
     customPickerView.pickerType=type_itemsPicker;
     customPickerView.componentCode=stationsCode;
     
@@ -541,7 +556,7 @@
     
     
     for (NSDictionary *dicTicket in newTickets) {
-        bool isAdded=[DBManager addTicketToDBWithT_email:[dicTicket objectForKey:@"email"] andT_from_name:[dicTicket objectForKey:@"from_name"] andt_idd:[dicTicket objectForKey:@"id"] andt_isUsed:[dicTicket objectForKey:@""] andt_mobile:[dicTicket objectForKey:@"mobile"] andt_name:[dicTicket objectForKey:@"name"] andt_num_tickets:[dicTicket objectForKey:@"number_of_tickets"] andt_rrn:[dicTicket objectForKey:@"rrn"] andt_ticket_type:[dicTicket objectForKey:@"ticket_type"] andt_to_name:[dicTicket objectForKey:@"to_name"] andt_trans_date:[dicTicket objectForKey:@"trans_date"] andt_trans_time:[dicTicket objectForKey:@"trans_time"] withNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDB];
+        bool isAdded=[DBManager addTicketToDBWithT_email:[dicTicket objectForKey:@"email"] andT_from_name:[dicTicket objectForKey:@"from_station"] andt_idd:[dicTicket objectForKey:@"id"] andt_isUsed:[dicTicket objectForKey:@""] andt_mobile:[dicTicket objectForKey:@"mobile"] andt_name:[dicTicket objectForKey:@"name"] andt_num_tickets:[dicTicket objectForKey:@"number_of_tickets"] andt_rrn:[dicTicket objectForKey:@"rrn"] andt_ticket_type:[dicTicket objectForKey:@"ticket_type"] andt_to_name:[dicTicket objectForKey:@"to_station"] andt_trans_date:[dicTicket objectForKey:@"trans_date"] andt_trans_time:[dicTicket objectForKey:@"trans_time"] withNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDB];
         
         if (!isAdded && errorDB!=nil) {
             UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
@@ -579,7 +594,7 @@
     usedTicketsNumber=[DBManager getAllUsedTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDBForCounting].count;
     
     if (errorDBForCounting!=nil) {
-        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDBForCounting.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alertNO show];
         
         
@@ -590,7 +605,7 @@
     
     allTicketsNumber=[DBManager getAllTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDBForCounting].count;
     if (errorDBForCounting!=nil) {
-        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDB.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDBForCounting.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alertNO show];
         
         
@@ -612,6 +627,46 @@
     
 }
 
+
+-(void)processProgressBar:(nilecodeAppDelegate* )appDelegate
+{
+        NSError *errorDBForCounting=nil;
+//      = [UIApplication sharedApplication].delegate;
+
+    usedTicketsNumber=[DBManager getAllUsedTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDBForCounting].count;
+    
+    if (errorDBForCounting!=nil) {
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDBForCounting.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertNO show];
+        
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        return;
+    }
+    
+    allTicketsNumber=[DBManager getAllTicketsWithNSManagedObjectContext:appDelegate.managedObjectContext withErrorMessage:errorDBForCounting].count;
+    if (errorDBForCounting!=nil) {
+        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:errorDBForCounting.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alertNO show];
+        
+        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        
+        return;
+    }
+    
+    float f=usedTicketsNumber*1.0/(allTicketsNumber*1.0==0.0?1:allTicketsNumber*1.0);
+    
+    [self drawPercent:f forImageView:progressImageView];
+    
+    _numberPassengersLabel.text=[NSString stringWithFormat:@"%i/%i",usedTicketsNumber,allTicketsNumber];
+    
+    
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+}
 - (IBAction)goNextStation:(id)sender {
 //    NSArray* aa=[stationsArray filteredArrayUsingPredicate:[NSPredicate                                                             predicateWithFormat:@"self == %@", selectedStationObject]];
     

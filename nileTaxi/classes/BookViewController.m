@@ -107,7 +107,7 @@
 
             break;
             
-            case dateButtonCodeRound:
+        case dateButtonCodeRound:
             selectedDateTripRound=selectedDate;
             [roundTripButton setTitle:[NSString stringWithFormat:@"%@",stringDate] forState:UIControlStateNormal];
 
@@ -247,9 +247,10 @@
 
 
 - (IBAction)selectDate:(id)sender {
-    
+    customPickerView.titlee=@"Choose Return Date :";
+
     [self enableOrDisablAll:NO];
-    
+
     
     switch (_TripType) {
         case trip_type_Express:
@@ -282,18 +283,22 @@
     
     [self enableOrDisablAll:NO];
     
-    
+    customPickerView.titlee=@"Choose Departure Date :";
+
     switch (_TripType) {
         case trip_type_Express:
+
             customPickerView.pickerType=type_DatePicker;
             
             break;
             
         case trip_type_Oncall:
+
             customPickerView.pickerType=type_DatePickerFull;
 
             break;
         default:
+
             customPickerView.pickerType=type_DatePicker;
             
             break;

@@ -388,15 +388,26 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
     
     NSMutableArray *resultsTickets;
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@sync_station_tickets&station_id=%@&synced_tickets=%@&token=%@",BaseURL,stationID,[usedTickets JSONRepresentation],[Helpers getToken]]]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:
+                                   [NSURL URLWithString:
+                                    [NSString stringWithFormat:@"%@sync_station_tickets",BaseURL]
+                                    ]
+                                   ];
     
+    [request addPostValue:stationID forKey:@"station_id"];
+    [request addPostValue:[NSString stringWithFormat:@"[%@]",[usedTickets componentsJoinedByString:@","]] forKey:@"used_tickets"];
+    [request addPostValue:[Helpers getToken] forKey:@"token"];
+
+    
+    NSLog(@"syncc   \n%@ \n",[NSString stringWithFormat:@"%@sync_station_tickets&station_id=%@&synced_tickets=%@&token=%@",BaseURL,stationID,[usedTickets JSONRepresentation],[Helpers getToken]]);
+
     [request startSynchronous];
     NSError *error = [request error];
     NSDictionary *result = nil;
     if(error == nil) {
         NSString *str = [request responseString];
         result = [str JSONValue];
-        NSLog(@"%@",result);
+        NSLog(@"syncc   \n%@ \n %@",[NSString stringWithFormat:@"%@sync_station_tickets&station_id=%@&synced_tickets=%@&token=%@",BaseURL,stationID,[usedTickets JSONRepresentation],[Helpers getToken]],result);
         int code=[(NSNumber*) [result valueForKey:@"error_code"] intValue];
         
         if (code==200) {
@@ -493,10 +504,28 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
         return nil;
     }
     
+    if ([Helpers getSelectedStationID]==nil) {
+        
+        
+        NSString *desc = NSLocalizedString(@"You Must select station", @"");
+        
+        NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : desc };
+        
+        
+        
+        *errorPtr = [NSError errorWithDomain:domain
+                     
+                                        code:-101
+                     
+                                    userInfo:userInfo];
+        
+        return nil;
+    }
+    
     
     NSDictionary *resultTikcket;
     
-    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@get_ticket_info&ticket_id=%@&token=%@",BaseURL,Ticket_id,[Helpers getToken]]]];
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@get_ticket_info&ticket_id=%@&token=%@&station_id=%@",BaseURL,Ticket_id,[Helpers getToken],[Helpers getSelectedStationID]]]];
     
     [request startSynchronous];
     NSError *error = [request error];
@@ -564,46 +593,47 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
     
     [Helpers logOutUser];
     
-    AlertView *av = [[AlertView alloc] initWithTitle:@"Login" message:@"LogIn Please"  cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"OK"]];
-    
-    
-    av.completion = ^(BOOL cancelled, NSInteger buttonIndex) {
-        if (!cancelled) {
-
-            NSError *tempError;
-            NSNumber* state=[NSNumber numberWithBool:[WebServiceManagerAPI logMeInWithUserName:[av textFieldAtIndex:0].text andPassword:[av textFieldAtIndex:1].text withErrorMessage:&tempError]];
-            
-            NSLog(@"1 %@", [av textFieldAtIndex:0].text);
-            NSLog(@"2 %@", [av textFieldAtIndex:1].text);
-            
-            
-            
-            
-            if (!state.boolValue) {
-                UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:tempError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-                [alertNO show];
-                
-            }else{
-                nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
-                appDelegate.isLogin=YES;
-                
-                
-                
-            }
-
-        
-        }
-    };
-    [av setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-    
-    // Alert style customization
-    [[av textFieldAtIndex:1] setSecureTextEntry:YES];
-    [[av textFieldAtIndex:0] setPlaceholder:@"User Name"];
-    [[av textFieldAtIndex:1] setPlaceholder:@"Password"];
-   
-    
-    dispatch_sync(dispatch_get_main_queue(), ^{
+        dispatch_sync(dispatch_get_main_queue(), ^{
         /* Do UI work here */
+            AlertView *av = [[AlertView alloc] initWithTitle:@"Login" message:@"LogIn Please"  cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"OK"]];
+            
+            
+            av.completion = ^(BOOL cancelled, NSInteger buttonIndex) {
+                if (!cancelled) {
+                    
+                    NSError *tempError;
+                    NSNumber* state=[NSNumber numberWithBool:[WebServiceManagerAPI logMeInWithUserName:[av textFieldAtIndex:0].text andPassword:[av textFieldAtIndex:1].text withErrorMessage:&tempError]];
+                    
+                    NSLog(@"1 %@", [av textFieldAtIndex:0].text);
+                    NSLog(@"2 %@", [av textFieldAtIndex:1].text);
+                    
+                    
+                    
+                    
+                    if (!state.boolValue) {
+                        UIAlertView *alertNO=[[UIAlertView alloc]initWithTitle:@"Error" message:tempError.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                        [alertNO show];
+                        
+                    }else{
+                        nilecodeAppDelegate   *appDelegate = (nilecodeAppDelegate *)[[UIApplication sharedApplication] delegate];
+                        appDelegate.isLogin=YES;
+                        
+                        
+                        
+                    }
+                    
+                    
+                }
+            };
+            [av setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+            
+            // Alert style customization
+            [[av textFieldAtIndex:1] setSecureTextEntry:YES];
+            [[av textFieldAtIndex:0] setPlaceholder:@"User Name"];
+            [[av textFieldAtIndex:1] setPlaceholder:@"Password"];
+            
+            
+
         [av show];
 //    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
@@ -1021,6 +1051,11 @@ static NSString *BaseURL = @"http://ntaxi.e7gezly.com/wp-admin/admin-ajax.php?te
 
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@book_new_ticket&token=%@&reservation_method=%@&number_of_tickets=%@&reservation_date=%@&mobile=%@&name=%@&email=%@&from_station=%@&to_station=%@&ticket_type=%@&time=%@&return_time=%@",BaseURL,[Helpers getToken],reservation_method,number_of_tickets,reservation_date,mobile,name,email,fromStationId,tostationId,ticketTypee,reservation_time_id,return_time_id]]];
+    
+    
+    
+    NSLog(@"%@",[NSString stringWithFormat:@"%@book_new_ticket&token=%@&reservation_method=%@&number_of_tickets=%@&reservation_date=%@&mobile=%@&name=%@&email=%@&from_station=%@&to_station=%@&ticket_type=%@&time=%@&return_time=%@",BaseURL,[Helpers getToken],reservation_method,number_of_tickets,reservation_date,mobile,name,email,fromStationId,tostationId,ticketTypee,reservation_time_id,return_time_id]);
+    
     
     [request startSynchronous];
     NSError *error = [request error];
